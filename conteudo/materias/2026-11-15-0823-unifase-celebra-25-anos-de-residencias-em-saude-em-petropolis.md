@@ -4,6 +4,7 @@ resumo: "Programas de Residência em Saúde da UNIFASE em Petrópolis completam 
 secao: "Cidade"
 tags: ["unifase", "saúde", "petrópolis", "residência médica", "sus"]
 data: "2026-11-15T08:23-03:00"
+imagem: "https://soupetropolis.com/wp-content/uploads/2026/11/3\u00ba-Encontro-de-Resid\u00eancia-em-Sa\u00fade-1000x600.jpeg"
 ---
 
 A UNIFASE celebrou os 25 anos de seus programas de Residência em Saúde com a realização do III Encontro Petropolitano de Residências em Saúde. O evento reuniu residentes, professores e profissionais para trocar experiências sobre a formação de especialistas e o fortalecimento do Sistema Único de Saúde na cidade.

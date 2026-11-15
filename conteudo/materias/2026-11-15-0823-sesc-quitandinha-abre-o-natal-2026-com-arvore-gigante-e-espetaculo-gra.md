@@ -4,6 +4,7 @@ resumo: "Abertura do Natal do Sesc no Quitandinha nesta quarta-feira tem árvore
 secao: "Agenda"
 tags: ["natal", "quitandinha", "agenda", "cultura"]
 data: "2026-11-15T08:23-03:00"
+imagem: "https://soupetropolis.com/wp-content/uploads/2017/12/Quitandinha-Noite.jpg"
 ---
 
 A magia do Natal chega a Petrópolis nesta quarta-feira (11). O Centro Cultural Sesc Quitandinha recebe a abertura oficial do Natal Sesc RJ 2026, trazendo uma programação repleta de atrações para toda a família a partir das 19h15.

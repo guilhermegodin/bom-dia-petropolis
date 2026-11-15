@@ -4,6 +4,7 @@ resumo: "Após deixar a rotina em Petrópolis, casal de jovens percorre a Améri
 secao: "Cotidiano"
 tags: ["petrópolis", "viagem", "kombi", "ushuaia", "cotidiano"]
 data: "2026-11-15T08:23-03:00"
+imagem: "https://soupetropolis.com/wp-content/uploads/2026/11/PhotoGrid_1794338515724-1000x600.jpg"
 ---
 
 Dois jovens de Petrópolis decidiram trocar a rotina convencional por uma vida na estrada a bordo de uma Kombi. Milena de Araújo e João Vitor Henrichs, ambos de 26 anos, deixaram a cidade em fevereiro de 2025 para realizar o sonho de viajar pela América do Sul. Depois de meses de estrada, o casal chegou a Ushuaia, na Argentina, conhecida como o Fim do Mundo.

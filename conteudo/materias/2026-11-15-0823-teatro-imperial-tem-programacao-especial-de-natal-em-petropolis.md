@@ -4,6 +4,7 @@ resumo: "Confira a programação especial de Natal do Teatro Imperial, com balé
 secao: "Agenda"
 tags: ["teatro imperial", "natal", "agenda", "cultura", "petrópolis"]
 data: "2026-11-15T08:23-03:00"
+imagem: "https://soupetropolis.com/wp-content/uploads/2026/11/Helena-Mello-1000x600.jpeg"
 ---
 
 O Teatro Imperial preparou uma programação especial para celebrar o Natal entre os meses de novembro e dezembro. Ao todo, cinco espetáculos passam pelo palco da casa cultural em Petrópolis, oferecendo atrações de dança, musicais e concertos para toda a família.

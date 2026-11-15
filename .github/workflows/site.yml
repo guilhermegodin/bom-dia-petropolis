@@ -38,9 +38,47 @@ jobs:
           # Contador de visitas e números do Mídia Kit (veja o README, seção "Audiência e anúncios")
           GOATCOUNTER_CODIGO: ${{ vars.GOATCOUNTER_CODIGO }}
           GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
+      - name: Gerar cards das redes sociais
+        run: python -m robo.redes cartoes
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
       - id: deploy
         uses: actions/deploy-pages@v4
+
+  # Depois que o site (e os cards) estão no ar, posta as matérias novas no Facebook e no Instagram.
+  # Sem o segredo META_TOKEN, este passo não faz nada.
+  redes:
+    needs: publicar
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: redes
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Postar nas redes sociais
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          REDES_POR_RODADA: ${{ vars.REDES_POR_RODADA }}
+          REDES_ATIVAS: ${{ vars.REDES_ATIVAS }}
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: python -m robo.redes postar
+      - name: Guardar o que já foi postado
+        run: |
+          git config user.name "Robô Bom Dia Petrópolis"
+          git config user.email "robo@users.noreply.github.com"
+          git add dados/redes.json 2>/dev/null || exit 0
+          git diff --cached --quiet && exit 0
+          git commit -m "Postagens nas redes de $(TZ=America/Sao_Paulo date '+%d/%m %Hh')"
+          for i in 1 2 3; do git pull --rebase -q && git push && exit 0; sleep 5; done
+          exit 1

@@ -4,6 +4,7 @@ resumo: "Escultura monumental do artista dinamarquês Thomas Dambo passa a integ
 secao: "Cidade"
 tags: ["itaipava", "cultura", "parque municipal", "arte"]
 data: "2026-11-15T08:23-03:00"
+imagem: "https://soupetropolis.com/wp-content/uploads/2026/11/PhotoGrid_1794338358705-1000x600.jpg"
 ---
 
 Petrópolis ganhou uma atração internacional que vai durar muito além dos dias de festival. O troll gigante de madeira instalado na entrada do Rock The Mountain vai permanecer no Parque Municipal Prefeito Paulo Rattes, em Itaipava, pelos próximos dez anos.

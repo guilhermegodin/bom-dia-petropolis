@@ -1,5 +1,14 @@
 [
   {
+    "nome": "Espetáculo Som e Luz no Museu Imperial",
+    "data_inicio": "2026-11-05",
+    "data_fim": "2026-11-30",
+    "horario": "19:00",
+    "local": "Museu Imperial – Rua da Imperatriz, 220, Centro",
+    "gratuito": "nao",
+    "materia": "2026-11-15-1057-espetaculo-som-e-luz-retorna-aos-jardins-do-museu-imperial-em-petropol"
+  },
+  {
     "nome": "Festival Literário Internacional de Petrópolis - Flipetrópolis",
     "data_inicio": "2026-11-12",
     "data_fim": "2026-11-15",
@@ -9,6 +18,15 @@
     "materia": "2026-11-15-0823-flipetropolis-2026-comeca-no-palacio-de-cristal-com-entrada-gratuita"
   },
   {
+    "nome": "3º Flipetrópolis - Festival Literário Internacional de Petrópolis",
+    "data_inicio": "2026-11-12",
+    "data_fim": "2026-11-15",
+    "horario": "",
+    "local": "Palácio de Cristal",
+    "gratuito": "sim",
+    "materia": "2026-11-15-1057-flipetropolis-2026-reune-literatura-e-debates-no-palacio-de-cristal"
+  },
+  {
     "nome": "Concerto Imperial de Natal",
     "data_inicio": "2026-11-19",
     "data_fim": "2026-11-19",
@@ -16,6 +34,51 @@
     "local": "Teatro Imperial",
     "gratuito": "nao_informado",
     "materia": "2026-11-15-0823-teatro-imperial-tem-programacao-especial-de-natal-em-petropolis"
+  },
+  {
+    "nome": "Petrópolis Gourmet - Abertura",
+    "data_inicio": "2026-11-19",
+    "data_fim": "2026-11-19",
+    "horario": "19h",
+    "local": "Shopping Estação Locanda, Itaipava",
+    "gratuito": "sim",
+    "materia": "2026-11-15-1057-petropolis-gourmet-traz-feira-shows-e-oficinas-a-itaipava"
+  },
+  {
+    "nome": "Petrópolis Gourmet - Segundo dia",
+    "data_inicio": "2026-11-20",
+    "data_fim": "2026-11-20",
+    "horario": "9h às 22h",
+    "local": "Shopping Estação Locanda, Itaipava",
+    "gratuito": "sim",
+    "materia": "2026-11-15-1057-petropolis-gourmet-traz-feira-shows-e-oficinas-a-itaipava"
+  },
+  {
+    "nome": "Festival de Cerâmica de Petrópolis",
+    "data_inicio": "2026-11-20",
+    "data_fim": "2026-11-22",
+    "horario": "10h às 19h",
+    "local": "Shopping Vilarejo, Itaipava",
+    "gratuito": "sim",
+    "materia": "2026-11-15-1057-festival-de-ceramica-e-atracoes-culturais-agitam-petropolis"
+  },
+  {
+    "nome": "Petrópolis Gourmet - Terceiro dia",
+    "data_inicio": "2026-11-21",
+    "data_fim": "2026-11-21",
+    "horario": "10h às 22h",
+    "local": "Shopping Estação Locanda, Itaipava",
+    "gratuito": "sim",
+    "materia": "2026-11-15-1057-petropolis-gourmet-traz-feira-shows-e-oficinas-a-itaipava"
+  },
+  {
+    "nome": "Petrópolis Gourmet - Encerramento",
+    "data_inicio": "2026-11-22",
+    "data_fim": "2026-11-22",
+    "horario": "10h às 18h",
+    "local": "Shopping Estação Locanda, Itaipava",
+    "gratuito": "sim",
+    "materia": "2026-11-15-1057-petropolis-gourmet-traz-feira-shows-e-oficinas-a-itaipava"
   },
   {
     "nome": "Clássicos Encantados de Natal – O Musical",
