@@ -49,16 +49,28 @@ img { max-width: 100%; height: auto; display: block; }
 .pular { position: absolute; left: -999px; }
 .pular:focus { left: 16px; top: 8px; z-index: 10; background: var(--papel); padding: 8px 12px; }
 
-/* Barra do dia */
-.barra-dia { background: var(--serra-escura); color: #e6efe9; font: 13px/1 var(--sans); }
-.barra-dia .envoltorio { display: flex; justify-content: space-between; gap: 12px; padding-top: 8px; padding-bottom: 8px; }
-.barra-local { opacity: .8; }
-@media (max-width: 560px) { .barra-local { display: none; } }
-
-/* Marca */
+/* Topo: atalhos | marca | relógio e busca */
 .topo { background: var(--papel); border-bottom: 1px solid var(--linha); }
-.topo .envoltorio { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 18px; padding-bottom: 16px; }
-.marca { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.topo-grade {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 18px;
+  padding-top: 16px; padding-bottom: 14px;
+}
+.atalhos { display: flex; gap: 14px; }
+.atalhos a {
+  display: flex; flex-direction: column; align-items: center; gap: 5px; text-decoration: none;
+  font: 600 12px/1 var(--sans); color: var(--suave);
+}
+.bolinha {
+  width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center;
+  color: #fff; background: var(--serra); transition: transform .15s ease;
+}
+.atalhos a:hover .bolinha { transform: translateY(-2px); }
+.b-cotidiano { background: var(--cotidiano); }
+.b-agenda { background: var(--agenda); }
+.b-cidade { background: var(--cidade); }
+.b-tempo { background: var(--sol); }
+@media (prefers-color-scheme: dark) { .bolinha { color: #171512; } }
+.marca { display: flex; align-items: center; gap: 12px; text-decoration: none; justify-self: center; }
 .marca-sol { flex: none; }
 .marca-nome {
   display: flex; flex-direction: column;
@@ -70,8 +82,28 @@ img { max-width: 100%; height: auto; display: block; }
   font: 700 clamp(12px, 2.2vw, 15px)/1.2 var(--sans);
   letter-spacing: 3px; text-transform: uppercase; color: var(--sol-escuro);
 }
-.lema { margin: 0; font: italic 600 18px/1.3 var(--serifa); color: var(--suave); text-align: right; }
-@media (max-width: 700px) { .lema { display: none; } }
+.topo-direita { justify-self: end; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.relogio { text-align: right; font-family: var(--sans); line-height: 1.15; }
+.relogio strong { display: block; font: 700 22px/1 var(--sans); font-variant-numeric: tabular-nums; color: var(--serra); }
+@media (prefers-color-scheme: dark) { .relogio strong { color: var(--sol); } }
+.relogio span { font-size: 13px; color: var(--suave); }
+.busca { display: flex; }
+.busca input {
+  width: 190px; min-width: 0; font: 15px/1 var(--sans); color: var(--texto); background: var(--fundo);
+  border: 1px solid var(--linha); border-right: 0; border-radius: 6px 0 0 6px; padding: 8px 10px;
+}
+.busca button {
+  font: 700 14px/1 var(--sans); background: var(--serra); color: #fff; border: 0;
+  border-radius: 0 6px 6px 0; padding: 0 12px; cursor: pointer;
+}
+.busca-grande { margin-bottom: 18px; max-width: 560px; }
+.busca-grande input { flex: 1; width: auto; font-size: 18px; padding: 12px 14px; }
+.busca-grande button { font-size: 16px; padding: 0 18px; }
+.busca-status { color: var(--suave); font-family: var(--sans); }
+@media (max-width: 899px) {
+  .topo-grade { grid-template-columns: 1fr; justify-items: center; gap: 12px; }
+  .atalhos, .topo-direita { display: none; }
+}
 
 /* Menu de editorias */
 .menu { background: var(--serra); position: sticky; top: 0; z-index: 5; box-shadow: 0 2px 0 var(--sol); }
@@ -84,20 +116,9 @@ img { max-width: 100%; height: auto; display: block; }
 }
 .menu a:hover { background: rgba(255, 255, 255, .08); }
 .menu a[aria-current="page"] { border-bottom-color: var(--sol); background: rgba(0, 0, 0, .15); }
-
-/* Faixa de últimas */
-.faixa { background: var(--creme); border-bottom: 1px solid var(--linha); font: 15px/1.3 var(--sans); }
-.faixa .envoltorio { display: flex; align-items: center; gap: 14px; padding-top: 10px; padding-bottom: 10px; }
-.faixa-rotulo {
-  flex: none; background: var(--sol-escuro); color: #fff; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .8px; font-size: 12px; padding: 5px 8px; border-radius: 4px;
-}
-@media (prefers-color-scheme: dark) { .faixa-rotulo { color: #171512; } }
-.faixa ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 26px; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
-.faixa ul::-webkit-scrollbar { display: none; }
-.faixa time { font-weight: 700; color: var(--sol-escuro); margin-right: 6px; }
-.faixa a { text-decoration: none; }
-.faixa a:hover { text-decoration: underline; }
+.menu .m-busca { margin-left: auto; display: flex; align-items: center; gap: 6px; padding-top: 12px; padding-bottom: 10px; }
+.menu .m-busca svg { width: 18px; height: 18px; }
+@media (min-width: 900px) { .menu .m-busca { display: none; } }
 
 main { padding: 26px 0 50px; }
 
@@ -177,7 +198,7 @@ a.foto:hover img { transform: scale(1.03); }
 
 /* Lateral */
 .lateral { display: flex; flex-direction: column; gap: 26px; }
-@media (min-width: 900px) { .lateral { position: sticky; top: 64px; align-self: start; } }
+
 .caixa { background: var(--papel); border: 1px solid var(--linha); border-radius: 8px; padding: 18px; }
 .caixa h2 {
   margin: 0 0 14px; font: 700 13px/1 var(--sans); text-transform: uppercase; letter-spacing: 1.2px;
@@ -288,3 +309,49 @@ a.foto:hover img { transform: scale(1.03); }
 .rodape a:hover { text-decoration: underline; }
 .rodape-fim { border-top: 1px solid rgba(255, 255, 255, .12); padding-top: 14px; padding-bottom: 22px; font-size: 13px; opacity: .7; }
 .principal > .agenda-lista + .bloco { margin-top: 40px; }
+
+main { padding-top: 22px; }
+
+/* Carrossel da capa */
+.carrossel { min-width: 0; position: relative; }
+.carrossel-trilho {
+  display: grid; grid-auto-flow: column; grid-auto-columns: 100%;
+  overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain;
+}
+.carrossel-trilho::-webkit-scrollbar { display: none; }
+.slide { scroll-snap-align: start; min-width: 0; }
+.carrossel-controles { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 14px; }
+.pontos { display: flex; gap: 8px; }
+.pontos button {
+  width: 10px; height: 10px; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
+  background: var(--linha); transition: width .2s ease, background .2s ease;
+}
+.pontos button[aria-current="true"] { width: 26px; border-radius: 5px; background: var(--sol); }
+.seta {
+  width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--linha); background: var(--papel);
+  color: var(--texto); font: 700 20px/1 var(--sans); cursor: pointer;
+}
+.seta:hover { border-color: var(--sol); color: var(--sol-escuro); }
+
+/* Widget: tempo */
+.tempo-agora { display: grid; grid-template-columns: auto auto 1fr; align-items: center; gap: 10px; font-family: var(--sans); }
+.tempo-icone { font-size: 36px; line-height: 1; }
+.tempo-agora > strong { font: 800 40px/1 var(--titulo); color: var(--serra); }
+@media (prefers-color-scheme: dark) { .tempo-agora > strong { color: var(--sol); } }
+.tempo-agora b { display: block; font-size: 15px; }
+.tempo-agora span { font-size: 13px; color: var(--suave); line-height: 1.35; }
+.tempo-dias {
+  list-style: none; margin: 14px 0 0; padding: 12px 0 0; border-top: 1px solid var(--linha);
+  display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; font: 600 15px/1.3 var(--sans);
+}
+.tempo-dias span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .6px; color: var(--suave); }
+.tempo-dias b { display: block; font-size: 22px; font-weight: 400; margin: 2px 0; }
+.tempo-dias small { color: var(--suave); font-weight: 400; }
+.cartao.sem-foto { grid-template-columns: 1fr; }
+.bloco .cartao.deitado.grande { border-top: 0; padding-top: 0; }
+@media (min-width: 560px) { .bloco .cartao.deitado.grande { grid-template-columns: minmax(0, 1.2fr) 1fr; gap: 22px; } }
+@media (max-width: 599px) {
+  .menu a { padding-left: 12px; padding-right: 12px; font-size: 14px; }
+  .menu .m-busca span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+}
+.carrossel-trilho { align-items: start; }

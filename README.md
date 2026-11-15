@@ -58,6 +58,9 @@ cada uma ganha uma arte própria de serra e sol nas cores da editoria. Se uma ma
 campo `imagem` no cabeçalho (endereço de uma foto com direito de uso), ela substitui a arte.
 Prévias do layout ficam em `previa/`.
 
+O arquivo `site/portal.js` cuida do relógio, do carrossel de manchetes, da previsão do tempo
+(Open-Meteo, grátis e sem chave) e da busca, que procura nas matérias listadas em `busca.json`.
+
 Para ligar o GitHub Pages (uma vez só): **Settings → Pages → Build and deployment → Source:
 GitHub Actions**.
 
