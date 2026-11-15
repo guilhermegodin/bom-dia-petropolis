@@ -34,6 +34,19 @@ Cada decisão, inclusive as notícias descartadas e o motivo, fica em `dados/reg
 O nome do modelo grátis muda de tempos em tempos. Crie a variável `GEMINI_MODELO` (aba
 Variables) com o nome atual de um modelo "Flash-Lite" listado no Google AI Studio.
 
+### Releases por e-mail (opcional)
+
+O robô também lê releases enviados para uma caixa de e-mail do portal.
+
+1. Crie um Gmail só para o portal e ative a verificação em duas etapas
+   (https://myaccount.google.com/security).
+2. Crie uma **senha de app** em https://myaccount.google.com/apppasswords.
+3. Salve dois segredos no GitHub: `EMAIL_USUARIO` (o endereço) e `EMAIL_SENHA_APP` (a senha de app).
+4. Peça às assessorias (prefeitura, Sesc, museus, teatros) para incluírem esse e-mail na lista de releases.
+5. Para aceitar só remetentes conhecidos, preencha `remetentes` na fonte "Releases por e-mail" em `fontes.yaml`.
+
+O robô só lê os e-mails, sem apagar nem marcar como lidos.
+
 ## Ajustes comuns
 
 - **Adicionar uma fonte:** inclua um item em `fontes.yaml`.

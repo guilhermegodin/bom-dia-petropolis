@@ -1,9 +1,17 @@
 # Fontes que o robô verifica a cada execução.
 # tipo: rss  -> lê o feed RSS/Atom
+# tipo: email -> lê os releases que chegam na caixa de e-mail do portal
 # tipo: html -> abre a página e pega os links cujo endereço combina com "padrao_link"
 # Fontes marcadas "confirmar: true" ainda não foram testadas; se falharem, o robô só pula.
 
 fontes:
+  - nome: Releases por e-mail
+    tipo: email
+    # Deixe a lista vazia para aceitar qualquer remetente, ou coloque partes dos endereços
+    # aceitos, ex.: ["petropolis.rj.gov.br", "sescrio.org.br"]
+    remetentes: []
+    secao_sugerida: Cidade
+
   - nome: Prefeitura de Petrópolis
     tipo: html
     url: https://www.petropolis.rj.gov.br/pmp/index.php/imprensa/noticias.html
