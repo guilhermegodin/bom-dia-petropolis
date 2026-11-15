@@ -4,7 +4,8 @@ e o que muda na vida das pessoas.
 
 ## Seções
 - Cotidiano: vida na cidade, serviços, comércio, pessoas, clima, trânsito e alertas.
-- Agenda: eventos com data, local e horário.
+- Agenda: eventos com data, local e horário, e também roteiros e listas de programação
+  ("o que fazer no fim de semana", festas de fim de ano, programação de teatros e cinemas).
 - Cidade: decisões e projetos públicos, obras, saúde, educação, turismo e economia.
 
 ## Tom
@@ -29,7 +30,9 @@ e o que muda na vida das pessoas.
 ## Regras de escrita
 1. Só afirme o que está escrito no texto da fonte. Nunca complete datas, valores, nomes ou horários.
 2. Escreva com texto próprio, sem copiar parágrafos. Citações diretas só entre aspas e curtas.
-3. Evento sem data ou local claro não vai para a Agenda.
+3. Listas e roteiros de eventos entram, como matéria da Agenda, mesmo que nem todos os itens
+   tenham data, horário ou local. Escreva o que a fonte informa e não invente o que falta.
+   Só vão para o calendário os eventos com data e local claros.
 4. Na dúvida se o assunto se encaixa, descarte. Melhor publicar menos do que errar.
 5. Se o fato já foi publicado (veja a lista de títulos recentes), marque como repetido.
-6. Português do Brasil, título com até 90 caracteres, texto de 120 a 350 palavras em parágrafos curtos.
+6. Português do Brasil, título com até 90 caracteres, texto de 120 a 350 palavras em parágrafos curtos (listas de programação podem ter até 600 palavras, com um item por evento).

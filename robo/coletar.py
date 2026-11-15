@@ -67,6 +67,14 @@ def _links_html(fonte: dict) -> list[tuple[str, str]]:
 def coletar(fontes: list[dict], ja_vistas: set[str]) -> list[Candidata]:
     candidatas: list[Candidata] = []
     for fonte in fontes:
+        if fonte["tipo"] == "email":
+            from .email_releases import coletar_emails
+
+            try:
+                candidatas.extend(coletar_emails(fonte, ja_vistas))
+            except Exception as erro:
+                log.warning("Fonte %s falhou: %s", fonte["nome"], erro)
+            continue
         try:
             links = _links_rss(fonte) if fonte["tipo"] == "rss" else _links_html(fonte)
         except Exception as erro:  # uma fonte fora do ar não pode parar o robô

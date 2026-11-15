@@ -37,6 +37,8 @@ jobs:
           GEMINI_MODELO: ${{ vars.GEMINI_MODELO }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          EMAIL_USUARIO: ${{ secrets.EMAIL_USUARIO }}
+          EMAIL_SENHA_APP: ${{ secrets.EMAIL_SENHA_APP }}
         run: python -m robo.main ${{ inputs.teste && '--teste' || '' }}
       - name: Salvar matérias novas
         if: ${{ !inputs.teste }}
