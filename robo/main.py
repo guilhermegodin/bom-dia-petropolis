@@ -113,9 +113,12 @@ def main() -> None:
             caminho = salvar_materia(resultado, agora)
             recentes.append(resultado["titulo"])
             registro["arquivo"] = caminho.name
-            evento = resultado["evento"]
-            if evento["tem_evento"] and evento["data_inicio"] and evento["local"]:
-                agenda.append({**evento, "materia": caminho.stem})
+            ja_na_agenda = {(e["nome"].lower(), e["data_inicio"]) for e in agenda}
+            for evento in resultado.get("eventos", []):
+                chave = (evento["nome"].lower(), evento["data_inicio"])
+                if evento["data_inicio"] and evento["local"] and chave not in ja_na_agenda:
+                    ja_na_agenda.add(chave)
+                    agenda.append({**evento, "materia": caminho.stem})
             publicadas += 1
             log.info("Publicada: %s", resultado["titulo"])
         if not args.teste:

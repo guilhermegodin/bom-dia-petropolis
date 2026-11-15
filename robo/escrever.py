@@ -37,25 +37,25 @@ ESQUEMA = {
         "resumo": {"type": "string"},
         "texto": {"type": "string"},
         "tags": {"type": "array", "items": {"type": "string"}},
-        "evento": {
-            "type": "object",
-            "properties": {
-                "tem_evento": {"type": "boolean"},
-                "nome": {"type": "string"},
-                "data_inicio": {"type": "string"},
-                "data_fim": {"type": "string"},
-                "horario": {"type": "string"},
-                "local": {"type": "string"},
-                "gratuito": {"type": "string", "enum": ["sim", "nao", "nao_informado"]},
+        "eventos": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "nome": {"type": "string"},
+                    "data_inicio": {"type": "string"},
+                    "data_fim": {"type": "string"},
+                    "horario": {"type": "string"},
+                    "local": {"type": "string"},
+                    "gratuito": {"type": "string", "enum": ["sim", "nao", "nao_informado"]},
+                },
+                "required": ["nome", "data_inicio", "data_fim", "horario", "local", "gratuito"],
+                "additionalProperties": False,
             },
-            "required": [
-                "tem_evento", "nome", "data_inicio", "data_fim", "horario", "local", "gratuito"
-            ],
-            "additionalProperties": False,
         },
     },
     "required": [
-        "publicar", "motivo", "repetida", "secao", "titulo", "resumo", "texto", "tags", "evento"
+        "publicar", "motivo", "repetida", "secao", "titulo", "resumo", "texto", "tags", "eventos"
     ],
     "additionalProperties": False,
 }
@@ -67,8 +67,9 @@ INSTRUCOES = """Avalie a notícia abaixo segundo o guia editorial.
 - "texto": a matéria em Markdown, sem título, em parágrafos curtos. Não cite o veículo de origem.
 - "resumo": uma frase de até 160 caracteres para a capa.
 - "tags": de 2 a 5 palavras-chave em minúsculas.
-- "evento": preencha só se for um evento com data e local claros na fonte;
-  datas no formato AAAA-MM-DD; deixe campos vazios ("") quando não houver a informação.
+- "eventos": liste cada evento citado que tenha data e local claros na fonte (pode ser
+  vários, no caso de uma lista de programação); datas no formato AAAA-MM-DD; deixe campos
+  vazios ("") quando não houver a informação; lista vazia se não houver eventos.
 - Se "publicar" for false, os campos de texto podem ficar vazios.
 
 Hoje é {hoje}.
