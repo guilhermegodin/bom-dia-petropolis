@@ -31,6 +31,11 @@ jobs:
       - run: pip install -r requirements.txt
       - name: Rodar o robô
         env:
+          # Qual IA usar: "gemini" (grátis, padrão) ou "claude" (pago).
+          # Para trocar, crie a variável IA_PROVEDOR em Settings > Secrets and variables > Actions > Variables.
+          IA_PROVEDOR: ${{ vars.IA_PROVEDOR || 'gemini' }}
+          GEMINI_MODELO: ${{ vars.GEMINI_MODELO }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python -m robo.main ${{ inputs.teste && '--teste' || '' }}
       - name: Salvar matérias novas
