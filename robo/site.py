@@ -24,6 +24,8 @@ from zoneinfo import ZoneInfo
 
 import markdown
 
+from robo import anuncios, audiencia
+
 RAIZ = Path(__file__).resolve().parent.parent
 PASTA_MATERIAS = RAIZ / "conteudo" / "materias"
 ARQ_AGENDA = RAIZ / "dados" / "agenda.json"
@@ -41,6 +43,7 @@ MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho",
 DIAS = ["segunda-feira", "terça-feira", "quarta-feira", "quinta-feira",
         "sexta-feira", "sábado", "domingo"]
 POR_PAGINA = 30
+ANUNCIOS = anuncios.Config()  # preenchido em gerar()
 
 # Paletas da arte: (céu de cima, céu de baixo, sol, serra do fundo, serra da frente)
 PALETAS = {
@@ -214,6 +217,16 @@ def imagem(m: Materia, base: str = "", classe: str = "") -> str:
 
 # ---------------------------------------------------------------- moldura
 
+def contador() -> str:
+    """Script do GoatCounter: conta visitas sem cookies e sem guardar dados pessoais."""
+    cod = audiencia.codigo()
+    if not cod:
+        return ""
+    return (f'<script data-goatcounter="https://{escape(cod)}.goatcounter.com/count" '
+            'async src="https://gc.zgo.at/count.js"></script>\n')
+
+
+
 def pagina(titulo: str, conteudo: str, agora: datetime, ativo: str = "", base: str = "",
            descricao: str = "", ultimas: list[Materia] | None = None) -> str:
     itens = [("index.html", "Início", "inicio")] + [
@@ -247,7 +260,7 @@ def pagina(titulo: str, conteudo: str, agora: datetime, ativo: str = "", base: s
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{base}estilo.css">
 <script src="{base}portal.js" defer></script>
-</head>
+{contador()}</head>
 <body data-base="{base}">
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 <header class="topo"><div class="envoltorio topo-grade">
@@ -262,6 +275,7 @@ def pagina(titulo: str, conteudo: str, agora: datetime, ativo: str = "", base: s
 </div>
 </div></header>
 <nav class="menu" aria-label="Editorias"><div class="envoltorio">{menu}</div></nav>
+<div class="envoltorio">{anuncios.banner(ANUNCIOS, "topo", base)}</div>
 <main id="conteudo"><div class="envoltorio">
 {conteudo}
 </div></main>
@@ -270,10 +284,12 @@ def pagina(titulo: str, conteudo: str, agora: datetime, ativo: str = "", base: s
 <p>As boas notícias da Cidade Imperial: gente que faz, o que fazer e o que muda em Petrópolis.</p></div></div>
 <div><h2>Editorias</h2><ul>{links_rodape}<li><a href="{base}busca.html">Buscar</a></li></ul></div>
 <div><h2>Sobre</h2><p>Portal independente, atualizado quatro vezes por dia.
-As matérias são escritas com ajuda de inteligência artificial a partir de informações públicas.</p></div>
+As matérias são escritas com ajuda de inteligência artificial a partir de informações públicas.</p>
+<p><a class="rodape-anuncie" href="{base}midia-kit.html">Anuncie no {NOME}</a></p></div>
 </div>
 <div class="envoltorio rodape-fim">© {agora.year} {NOME}</div>
 </footer>
+{anuncios.SCRIPT_RODIZIO}
 </body>
 </html>
 """
@@ -401,8 +417,80 @@ def lateral(materias: list[Materia], eventos: list[dict], hoje: date, agora: dat
 <section class="caixa caixa-tempo" id="tempo" aria-live="polite"><h2>Tempo em Petrópolis</h2>
 <div data-tempo><p class="vazio">Carregando a previsão…</p></div></section>
 <section class="caixa"><h2>Últimas</h2>{lista_numerada(materias[:5], agora, base)}</section>
+{anuncios.banner(ANUNCIOS, "lateral", base)}
 {agenda}
 </aside>"""
+
+
+# ---------------------------------------------------------------- mídia kit
+
+def numero(n: int) -> str:
+    return f"{n:,}".replace(",", ".")
+
+
+def midia_kit(materias: list[Materia], eventos: list[dict], agora: datetime) -> str:
+    """Página para mostrar a anunciantes: audiência, conteúdo, formatos e contato."""
+    aud = audiencia.buscar()
+    mes_passado = agora - timedelta(days=30)
+    no_mes = [m for m in materias if m.data >= mes_passado]
+    if aud and aud.visitas:
+        mais_vistas = "".join(
+            f'<li><a href="{escape(caminho.lstrip("/").removeprefix("bom-dia-petropolis/"))}">{escape(titulo.split(" · ")[0])}</a>'
+            f"<span>{numero(v)} visitas</span></li>"
+            for titulo, caminho, v in aud.paginas_mais_vistas
+        )
+        periodo = "nos últimos 30 dias" if aud.dias_medidos >= 30 else f"nos últimos {aud.dias_medidos} dias (medição começou há pouco)"
+        bloco_audiencia = f"""<section class="kit-bloco"><h2>Audiência</h2>
+<p class="kit-nota">Números reais, medidos {periodo} e atualizados quatro vezes por dia.</p>
+<div class="kit-numeros">
+<div><strong>{numero(aud.visitas)}</strong><span>visitas</span></div>
+<div><strong>{numero(aud.media_dia)}</strong><span>visitas por dia, em média</span></div>
+<div><strong>{numero(aud.melhor_dia)}</strong><span>visitas no melhor dia</span></div>
+</div>
+{f'<h3>Matérias mais lidas</h3><ol class="numerada">{mais_vistas}</ol>' if mais_vistas else ""}
+</section>"""
+    else:
+        bloco_audiencia = """<section class="kit-bloco"><h2>Audiência</h2>
+<p class="kit-nota">Estamos começando a medir as visitas. Os números aparecem aqui em breve.</p></section>"""
+
+    linhas = ""
+    for chave, info in anuncios.ESPACOS.items():
+        preco = escape(ANUNCIOS.precos.get(chave) or "Sob consulta")
+        celular = f"<br><small>celular: {info['celular']} px</small>" if info["celular"] != info["tamanho"] else ""
+        linhas += (f"<tr><th scope=\"row\">{info['nome']}</th><td>{info['onde']}</td>"
+                   f"<td>{info['tamanho']} px{celular}</td><td>{preco}</td></tr>")
+
+    contatos = []
+    if ANUNCIOS.link_whatsapp:
+        contatos.append(f'<a class="botao" href="{escape(ANUNCIOS.link_whatsapp)}" target="_blank" rel="noopener">'
+                        f"{ICONE_WHATS}Chamar no WhatsApp</a>")
+    if ANUNCIOS.email:
+        contatos.append(f'<a class="botao botao-claro" href="mailto:{escape(ANUNCIOS.email)}?subject=Anunciar%20no%20{NOME.replace(" ", "%20")}">'
+                        f"{escape(ANUNCIOS.email)}</a>")
+    contato = "".join(contatos) or "<p>Contato comercial em breve.</p>"
+
+    corpo = f"""<div class="kit">
+<header class="cabeca-secao kit-topo"><h1>Anuncie no {NOME}</h1>
+<p>As boas notícias de Petrópolis, todo dia. Sua marca ao lado das histórias de quem vive a cidade:
+gente que faz, o que fazer no fim de semana e o que muda na serra.</p></header>
+{bloco_audiencia}
+<section class="kit-bloco"><h2>Conteúdo</h2>
+<div class="kit-numeros">
+<div><strong>{numero(len(no_mes))}</strong><span>matérias nos últimos 30 dias</span></div>
+<div><strong>{numero(len(eventos))}</strong><span>eventos na agenda</span></div>
+<div><strong>4x</strong><span>atualizações por dia</span></div>
+</div>
+<p>Cobertura de Cotidiano, Agenda e Cidade, sempre com tom positivo: sem crime e sem briga política.
+Um ambiente seguro para a sua marca.</p></section>
+<section class="kit-bloco"><h2>Formatos</h2>
+<div class="tabela-rolagem"><table class="kit-tabela">
+<thead><tr><th scope="col">Espaço</th><th scope="col">Onde aparece</th><th scope="col">Tamanho da arte</th><th scope="col">Preço</th></tr></thead>
+<tbody>{linhas}</tbody></table></div>
+<p class="kit-nota">A arte pode ser JPG ou PNG. O banner leva direto para o seu site, Instagram ou WhatsApp,
+e os cliques são contados.</p></section>
+<section class="kit-bloco kit-contato"><h2>Vamos conversar</h2>{contato}</section>
+</div>"""
+    return pagina("Anuncie", corpo, agora, descricao=f"Mídia Kit do {NOME}: audiência, formatos e preços para anunciar.")
 
 
 # ---------------------------------------------------------------- geração
@@ -420,6 +508,10 @@ def gerar() -> None:
 
     agora = datetime.now(FUSO)
     hoje = agora.date()
+    global ANUNCIOS
+    ANUNCIOS = anuncios.carregar(hoje)
+    if anuncios.PASTA_IMAGENS.is_dir():
+        shutil.copytree(anuncios.PASTA_IMAGENS, SAIDA / "anuncios", ignore=shutil.ignore_patterns("*.md"))
     materias = ler_materias()
     for m in materias:
         (SAIDA / "artes" / f"{m.slug}.svg").write_text(arte_svg(m), "utf-8")
@@ -438,7 +530,10 @@ def gerar() -> None:
         for k, v in SECOES.items():
             da_secao = [m for m in materias if m.secao == v and m.slug not in usados][:4]
             usados |= {m.slug for m in da_secao}
-            blocos += bloco_secao(k, v, da_secao)
+            bloco = bloco_secao(k, v, da_secao)
+            if bloco and "anuncio-meio" not in blocos and blocos:
+                bloco = anuncios.banner(ANUNCIOS, "meio") + bloco
+            blocos += bloco
         mais = [m for m in materias[:POR_PAGINA] if m.slug not in usados]
         bloco_mais = ""
         if mais:
@@ -503,6 +598,7 @@ def gerar() -> None:
 <figure class="foto-materia">{imagem(m, "../")}</figure>
 <div class="corpo">{m.corpo_html}</div>
 <div class="tags">{tags}</div>
+{anuncios.banner(ANUNCIOS, "materia", "../")}
 </article>{lateral(materias, eventos, hoje, agora, base="../")}</div>
 <section class="bloco leia-tambem"><header class="bloco-topo"><h2>Leia também</h2></header>
 <div class="grade-3">{leia}</div></section>
@@ -514,6 +610,7 @@ document.querySelectorAll('.compartilhar').forEach(function (a) {{
         (SAIDA / m.url).write_text(
             pagina(m.titulo, corpo, agora, m.chave_secao, base="../", descricao=m.resumo, ultimas=materias), "utf-8"
         )
+    (SAIDA / "midia-kit.html").write_text(midia_kit(materias, eventos, agora), "utf-8")
     print(f"Site gerado: {len(materias)} matérias, {len(eventos)} eventos em {SAIDA}")
 
 

@@ -79,6 +79,37 @@ export GEMINI_API_KEY=...
 python -m robo.main --teste
 ```
 
+## Audiência e anúncios
+
+### Contador de visitas (GoatCounter, grátis)
+
+O site conta as visitas com o [GoatCounter](https://www.goatcounter.com), que é grátis, não usa
+cookies e não guarda dados pessoais (por isso não precisa de aviso de cookies).
+
+1. Crie a conta em https://www.goatcounter.com/signup. No campo **Code**, use `bomdiapetropolis`
+   (ou outro nome livre). Isso vira o endereço do seu painel: `https://bomdiapetropolis.goatcounter.com`.
+2. No GitHub, em **Settings → Secrets and variables → Actions → aba Variables → New repository variable**,
+   crie `GOATCOUNTER_CODIGO` com o código escolhido. A partir da próxima publicação o site começa a contar.
+3. Para os números aparecerem no Mídia Kit: no painel do GoatCounter, clique no seu nome (canto de
+   cima) → **API** → **New API key**, marque só a permissão de leitura de estatísticas
+   (**Read statistics**), salve e copie a chave. No GitHub, crie o segredo `GOATCOUNTER_TOKEN` com ela
+   (aba **Secrets**).
+
+No painel do GoatCounter você também vê os cliques em cada banner (aparecem como "anuncio-…").
+
+### Banners
+
+Tudo fica em `anuncios.yaml`, que tem as instruções dentro. Resumo: suba a imagem na pasta
+`anuncios/`, cadastre nome, imagem, link e datas no espaço desejado (topo, lateral, meio ou
+matéria) e faça o commit. O banner sai sozinho depois da data `ate`. Espaço sem anúncio mostra
+"Seu negócio aqui", que leva ao Mídia Kit. O contato comercial e os preços também ficam nesse arquivo.
+
+### Mídia Kit
+
+A página `midia-kit.html` (link "Anuncie" no rodapé) mostra a audiência dos últimos 30 dias, as
+matérias mais lidas, o volume de conteúdo, os formatos com tamanho e preço, e o contato. Ela se
+atualiza sozinha a cada publicação.
+
 ## Redes sociais (Facebook e Instagram)
 
 Depois que o site é publicado, o workflow "Publicar site" posta as matérias novas na Página do
