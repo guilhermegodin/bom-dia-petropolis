@@ -17,7 +17,7 @@ from zoneinfo import ZoneInfo
 
 import yaml
 
-from .coletar import coletar
+from .coletar import _baixar, coletar, extrair_imagem
 from .escrever import CotaEsgotada, Redator
 
 RAIZ = Path(__file__).resolve().parent.parent
@@ -55,7 +55,7 @@ def titulos_recentes() -> list[str]:
     return titulos
 
 
-def salvar_materia(m: dict, agora: datetime) -> Path:
+def salvar_materia(m: dict, agora: datetime, foto: str = "") -> Path:
     PASTA_MATERIAS.mkdir(parents=True, exist_ok=True)
     nome = f"{agora:%Y-%m-%d-%H%M}-{slug(m['titulo'])}.md"
     cabecalho = {
@@ -65,12 +65,42 @@ def salvar_materia(m: dict, agora: datetime) -> Path:
         "tags": m["tags"],
         "data": agora.isoformat(timespec="minutes"),
     }
+    if foto:
+        cabecalho["imagem"] = foto
     frontmatter = "\n".join(
         f"{k}: {json.dumps(v, ensure_ascii=False)}" for k, v in cabecalho.items()
     )
     caminho = PASTA_MATERIAS / nome
     caminho.write_text(f"---\n{frontmatter}\n---\n\n{m['texto'].strip()}\n", "utf-8")
     return caminho
+
+
+def completar_fotos(limite: int = 15) -> None:
+    """Busca a foto das matérias antigas que foram publicadas sem imagem."""
+    if not ARQ_REGISTRO.exists():
+        return
+    origem = {}
+    for linha in ARQ_REGISTRO.read_text("utf-8").splitlines():
+        r = json.loads(linha)
+        if r.get("arquivo") and r["url"].startswith("http"):
+            origem[r["arquivo"]] = r["url"]
+    for arquivo, url in list(origem.items())[-limite:]:
+        caminho = PASTA_MATERIAS / arquivo
+        if not caminho.exists():
+            continue
+        texto = caminho.read_text("utf-8")
+        cabeca = re.match(r"^---\n(.*?)\n---\n", texto, re.S)
+        if not cabeca or re.search(r"^imagem:", cabeca.group(1), re.M):
+            continue
+        try:
+            foto = extrair_imagem(_baixar(url), url)
+        except Exception as erro:
+            log.warning("Sem foto para %s: %s", arquivo, erro)
+            continue
+        if foto:
+            texto = texto.replace("\n---\n", f"\nimagem: {json.dumps(foto)}\n---\n", 1)
+            caminho.write_text(texto, "utf-8")
+            log.info("Foto adicionada: %s", arquivo)
 
 
 def main() -> None:
@@ -86,6 +116,8 @@ def main() -> None:
     agora = datetime.now(FUSO)
     recentes = titulos_recentes()
 
+    if not args.teste:
+        completar_fotos()
     candidatas = coletar(fontes, set(vistas))
     log.info("%d notícias novas para avaliar", len(candidatas))
 
@@ -110,7 +142,7 @@ def main() -> None:
             log.info("[teste] Publicaria em %s: %s", resultado["secao"], resultado["titulo"])
             publicadas += 1
         else:
-            caminho = salvar_materia(resultado, agora)
+            caminho = salvar_materia(resultado, agora, c.imagem)
             recentes.append(resultado["titulo"])
             registro["arquivo"] = caminho.name
             ja_na_agenda = {(e["nome"].lower(), e["data_inicio"]) for e in agenda}

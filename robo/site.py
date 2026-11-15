@@ -182,9 +182,16 @@ def arte_svg(m: Materia) -> str:
 
 
 def imagem(m: Materia, base: str = "", classe: str = "") -> str:
-    src = m.imagem or f"{base}artes/{m.slug}.svg"
+    """Foto da fonte quando houver; se ela não existir ou não carregar, a arte da serra."""
+    arte = f"{base}artes/{m.slug}.svg"
+    if m.imagem.startswith(("http://", "https://")):
+        tag = (f'<img src="{escape(m.imagem)}" alt="" loading="lazy" width="1200" height="675" '
+               f'referrerpolicy="no-referrer" '
+               f'onerror="this.onerror=null;this.src=\'{escape(arte)}\'">')
+    else:
+        tag = f'<img src="{escape(arte)}" alt="" loading="lazy" width="1200" height="675">'
     return (f'<a class="foto {classe}" href="{base}{m.url}" tabindex="-1" aria-hidden="true">'
-            f'<img src="{escape(src)}" alt="" loading="lazy" width="1200" height="675"></a>')
+            f'{tag}</a>')
 
 
 # ---------------------------------------------------------------- moldura

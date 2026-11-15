@@ -26,12 +26,34 @@ class Candidata:
     titulo: str
     texto: str
     secao_sugerida: str
+    imagem: str = ""
 
 
 def _baixar(url: str) -> str:
     resp = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
     resp.raise_for_status()
     return resp.text
+
+
+IGNORAR_IMAGEM = re.compile(r"logo|icon|avatar|sprite|banner-?ads|placeholder|gravatar|pixel|\.svg", re.I)
+
+
+def extrair_imagem(html: str, url: str) -> str:
+    """Pega a foto principal da notícia (og:image, twitter:image ou a 1ª foto do texto)."""
+    soup = BeautifulSoup(html, "html.parser")
+    for atributo, nome in (("property", "og:image"), ("name", "twitter:image"),
+                           ("property", "og:image:url"), ("name", "twitter:image:src")):
+        tag = soup.find("meta", attrs={atributo: nome})
+        if tag and tag.get("content") and not IGNORAR_IMAGEM.search(tag["content"]):
+            return urljoin(url, tag["content"].strip())
+    corpo = soup.find("article") or soup.find("main") or soup
+    for img in corpo.find_all("img"):
+        src = img.get("data-src") or img.get("data-lazy-src") or img.get("src") or ""
+        largura = img.get("width", "")
+        if (src and not src.startswith("data:") and not IGNORAR_IMAGEM.search(src)
+                and not (largura.isdigit() and int(largura) < 300)):
+            return urljoin(url, src.strip())
+    return ""
 
 
 def extrair_texto(html: str) -> str:
@@ -84,13 +106,15 @@ def coletar(fontes: list[dict], ja_vistas: set[str]) -> list[Candidata]:
         log.info("%s: %d links, %d novos", fonte["nome"], len(links), len(novos))
         for url, titulo in novos:
             try:
-                texto = extrair_texto(_baixar(url))
+                html = _baixar(url)
+                texto = extrair_texto(html)
+                foto = extrair_imagem(html, url)
             except Exception as erro:
                 log.warning("Não consegui abrir %s: %s", url, erro)
                 continue
             if len(texto) < 200:
                 continue
             candidatas.append(
-                Candidata(fonte["nome"], url, titulo, texto, fonte.get("secao_sugerida", ""))
+                Candidata(fonte["nome"], url, titulo, texto, fonte.get("secao_sugerida", ""), foto)
             )
     return candidatas
