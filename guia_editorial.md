@@ -20,6 +20,9 @@ e o que muda na vida das pessoas.
   histórias de moradores e negócios locais.
 - Problemas da cidade somente quando houver solução, obra, serviço útil ou orientação prática.
   Exemplo: "rua X será recapeada a partir de segunda" entra; "rua X está cheia de buracos" não entra.
+- Previsão do tempo entra no Cotidiano, como serviço ("leve guarda-chuva", "fim de semana de sol").
+- Listas e roteiros de programação ("30 eventos para curtir no fim de semana", festas de fim de ano)
+  sempre entram na Agenda, mesmo que a fonte traga só parte dos itens: publique os que ela traz.
 - Alertas de segurança sempre entram, com tom calmo e foco no que fazer: chuva forte,
   interdições, alertas da Defesa Civil.
 
