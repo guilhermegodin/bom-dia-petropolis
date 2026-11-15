@@ -15,11 +15,10 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-import anthropic
 import yaml
 
 from .coletar import coletar
-from .escrever import escrever
+from .escrever import CotaEsgotada, Redator
 
 RAIZ = Path(__file__).resolve().parent.parent
 PASTA_MATERIAS = RAIZ / "conteudo" / "materias"
@@ -90,12 +89,16 @@ def main() -> None:
     candidatas = coletar(fontes, set(vistas))
     log.info("%d notícias novas para avaliar", len(candidatas))
 
-    client = anthropic.Anthropic()
+    redator = Redator(guia)
     publicadas = 0
     for c in candidatas:
         if publicadas >= MAX_MATERIAS_POR_RODADA:
             break
-        resultado = escrever(client, guia, c, recentes, agora.date().isoformat())
+        try:
+            resultado = redator.escrever(c, recentes, agora.date().isoformat())
+        except CotaEsgotada as erro:
+            log.warning("Limite diário da IA atingido, o resto fica para a próxima rodada: %s", erro)
+            break
         if resultado is None:
             continue  # erro temporário: tenta de novo na próxima rodada
         vistas.append(c.url)

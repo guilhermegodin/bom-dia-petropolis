@@ -6,7 +6,7 @@ Portal de notícias de Petrópolis escrito automaticamente por IA, com tom posit
 
 1. **Coleta** (`robo/coletar.py`): quatro vezes por dia, o robô lê as fontes de `fontes.yaml`
    e pega as notícias que ainda não viu.
-2. **Escrita** (`robo/escrever.py`): o Claude lê cada notícia, decide se ela combina com o
+2. **Escrita** (`robo/escrever.py`): a IA (Gemini grátis por padrão, ou Claude) lê cada notícia, decide se ela combina com o
    `guia_editorial.md` e, se sim, escreve uma matéria com texto próprio e a coloca em
    Cotidiano, Agenda ou Cidade.
 3. **Publicação** (`robo/main.py`): as matérias aprovadas viram arquivos em
@@ -17,11 +17,22 @@ Cada decisão, inclusive as notícias descartadas e o motivo, fica em `dados/reg
 
 ## Configuração (uma vez só)
 
-1. Crie uma chave de API em https://platform.claude.com (menu API Keys).
+1. Crie uma chave grátis do Gemini em https://aistudio.google.com/apikey (não pede cartão).
 2. No GitHub, abra **Settings → Secrets and variables → Actions → New repository secret**,
-   com o nome `ANTHROPIC_API_KEY` e a chave como valor.
+   com o nome `GEMINI_API_KEY` e a chave como valor.
 3. Em **Actions → Robô de notícias → Run workflow**, marque "modo teste" para ver no log o
    que seria publicado, sem publicar nada.
+
+### Trocar para o Claude (pago) no futuro
+
+1. Crie uma chave em https://platform.claude.com e salve como o segredo `ANTHROPIC_API_KEY`.
+2. Em **Settings → Secrets and variables → Actions → Variables**, crie a variável
+   `IA_PROVEDOR` com o valor `claude`.
+
+### Se o Gemini reclamar do modelo
+
+O nome do modelo grátis muda de tempos em tempos. Crie a variável `GEMINI_MODELO` (aba
+Variables) com o nome atual de um modelo "Flash-Lite" listado no Google AI Studio.
 
 ## Ajustes comuns
 
@@ -34,6 +45,6 @@ Cada decisão, inclusive as notícias descartadas e o motivo, fica em `dados/reg
 
 ```bash
 pip install -r requirements.txt
-export ANTHROPIC_API_KEY=...
+export GEMINI_API_KEY=...
 python -m robo.main --teste
 ```
