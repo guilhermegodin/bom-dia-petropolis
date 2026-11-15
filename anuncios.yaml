@@ -1,0 +1,57 @@
+# ============================================================
+#  ANÚNCIOS DO BOM DIA PETRÓPOLIS
+#  Este é o único arquivo que você precisa mexer para vender banner.
+#
+#  Para colocar um anúncio no ar:
+#   1. Suba a imagem do cliente na pasta "anuncios/" do GitHub
+#      (Add file → Upload files). Use JPG ou PNG no tamanho indicado.
+#   2. Copie o modelo comentado (as linhas com #) do espaço desejado,
+#      tire o # do começo e troque nome, imagem, link e datas.
+#   3. Clique em "Commit changes". Em poucos minutos o banner aparece.
+#
+#  "de" e "ate" são opcionais: o banner só aparece entre essas datas
+#  e sai sozinho depois do fim. Se um espaço tiver mais de um anúncio
+#  ativo, eles se revezam a cada visita.
+#  Espaço sem anúncio mostra "Anuncie aqui", que leva ao Mídia Kit.
+# ============================================================
+
+# Como o anunciante fala com você (aparece no Mídia Kit e no "Anuncie aqui").
+contato:
+  email: ""        # ex.: anuncie@seudominio.com.br
+  whatsapp: ""     # só números com DDD, ex.: 5524999999999
+
+espacos:
+
+  # Faixa no alto de todas as páginas, logo abaixo do menu.
+  # Tamanho: 970x90 (computador). Opcional: imagem_celular 320x100.
+  topo:
+    preco: ""      # ex.: "R$ 300 por mês" (vazio = "sob consulta")
+    anuncios:
+      # - nome: Padaria Exemplo
+      #   imagem: anuncios/padaria-topo.jpg
+      #   imagem_celular: anuncios/padaria-celular.jpg
+      #   link: https://www.instagram.com/padariaexemplo
+      #   de: 2026-12-01
+      #   ate: 2026-12-31
+
+  # Quadrado na coluna da direita (no celular, aparece no meio da página).
+  # Tamanho: 300x250.
+  lateral:
+    preco: ""
+    anuncios:
+      # - nome: Loja Exemplo
+      #   imagem: anuncios/loja-lateral.jpg
+      #   link: https://wa.me/5524999999999
+      #   ate: 2026-12-31
+
+  # Faixa no meio da página inicial, entre as editorias.
+  # Tamanho: 728x90.
+  meio:
+    preco: ""
+    anuncios:
+
+  # Dentro de cada matéria, logo depois do texto.
+  # Tamanho: 728x90.
+  materia:
+    preco: ""
+    anuncios:
