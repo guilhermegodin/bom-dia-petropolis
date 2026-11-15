@@ -4,6 +4,7 @@ resumo: "A terceira edição do Festival Literário Internacional de Petrópolis
 secao: "Agenda"
 tags: ["flipetrópolis", "palácio de cristal", "literatura", "agenda cultural"]
 data: "2026-11-15T08:23-03:00"
+imagem: "https://soupetropolis.com/wp-content/uploads/2025/11/PhotoGrid_1764087536295-1000x600.jpg"
 ---
 
 Petrópolis recebe a terceira edição do Festival Literário Internacional de Petrópolis, o Flipetrópolis, no Palácio de Cristal. O evento reúne escritores, jornalistas e artistas até domingo com uma programação variada que inclui debates, música e atrações infantis.

@@ -4,6 +4,7 @@ resumo: "Especialistas do Hospital Santa Teresa destacam como o pré-natal rigor
 secao: "Cidade"
 tags: ["saúde", "hospital santa teresa", "prematuridade", "novembro roxo"]
 data: "2026-11-15T08:23-03:00"
+imagem: "https://soupetropolis.com/wp-content/uploads/2026/03/IMG-20260331-WA0117-1000x600.jpg"
 ---
 
 A campanha Novembro Roxo traz atenção para um tema essencial: a prevenção e o suporte à prematuridade. O nascimento antes das 37 semanas exige cuidados especiais que começam muito antes do parto, ainda durante o acompanhamento médico de rotina.
