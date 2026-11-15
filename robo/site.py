@@ -181,13 +181,17 @@ def arte_svg(m: Materia) -> str:
 </svg>"""
 
 
+CREDITO_FOTO = "Foto: divulgação"
+
+
 def imagem(m: Materia, base: str = "", classe: str = "") -> str:
     """Foto da fonte quando houver; se ela não existir ou não carregar, a arte da serra."""
     arte = f"{base}artes/{m.slug}.svg"
     if m.imagem.startswith(("http://", "https://")):
         tag = (f'<img src="{escape(m.imagem)}" alt="" loading="lazy" width="1200" height="675" '
                f'referrerpolicy="no-referrer" '
-               f'onerror="this.onerror=null;this.src=\'{escape(arte)}\'">')
+               f'onerror="this.onerror=null;this.src=\'{escape(arte)}\';'
+               f'var f=this.closest(\'figure\');f&&f.querySelector(\'figcaption\')&&f.querySelector(\'figcaption\').remove()">')
     else:
         tag = f'<img src="{escape(arte)}" alt="" loading="lazy" width="1200" height="675">'
     return (f'<a class="foto {classe}" href="{base}{m.url}" tabindex="-1" aria-hidden="true">'
@@ -442,13 +446,15 @@ def gerar() -> None:
             relacionadas += [o for o in materias if o.slug != m.slug and o not in relacionadas][:3 - len(relacionadas)]
         leia = "".join(cartao(o, base="../") for o in relacionadas)
         texto_whats = f"{m.titulo} – {NOME}"
+        credito = (f'<figcaption class="credito-foto">{CREDITO_FOTO}</figcaption>'
+                   if m.imagem.startswith(("http://", "https://")) else "")
         corpo = f"""<div class="colunas"><article class="materia">
 <nav class="trilha" aria-label="Você está em"><a href="../index.html">Início</a> › {chapeu(m, "../")}</nav>
 <h1>{escape(m.titulo)}</h1>
 <p class="linha-fina">{escape(m.resumo)}</p>
 <div class="assinatura"><span><strong>Redação {NOME}</strong><br>{quando(m)} · {leitura(m)}</span>
 <a class="compartilhar" data-texto="{escape(texto_whats)}" href="https://wa.me/?text={escape(texto_whats)}" target="_blank" rel="noopener">{ICONE_WHATS}Compartilhar</a></div>
-<figure class="foto-materia">{imagem(m, "../")}</figure>
+<figure class="foto-materia">{imagem(m, "../")}{credito}</figure>
 <div class="corpo">{m.corpo_html}</div>
 <div class="tags">{tags}</div>
 </article>{lateral(materias, eventos, hoje, agora, base="../")}</div>
