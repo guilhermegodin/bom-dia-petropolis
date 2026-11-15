@@ -288,3 +288,10 @@ a.foto:hover img { transform: scale(1.03); }
 .rodape a:hover { text-decoration: underline; }
 .rodape-fim { border-top: 1px solid rgba(255, 255, 255, .12); padding-top: 14px; padding-bottom: 22px; font-size: 13px; opacity: .7; }
 .principal > .agenda-lista + .bloco { margin-top: 40px; }
+
+.credito-foto {
+  margin-top: 6px;
+  font: 12px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--suave, #6f665b);
+  text-align: right;
+}
