@@ -3,7 +3,7 @@
 Uso:  python -m robo.site   (gera a pasta _site/)
 
 O layout segue o de um portal de notícias: barra do dia, marca, menu de editorias,
-faixa de últimas, manchete com arte, destaques, blocos por editoria, coluna lateral
+manchete em carrossel, destaques, blocos por editoria, coluna lateral
 com "Últimas" e "Agenda da semana", e rodapé. Como as matérias não têm foto, cada uma
 ganha uma arte própria (serra + sol) gerada a partir do título, nas cores da editoria.
 Se uma matéria um dia trouxer o campo `imagem` no cabeçalho, ela é usada no lugar da arte.
@@ -63,6 +63,24 @@ SOL = """<svg class="marca-sol" width="46" height="46" viewBox="0 0 44 44" aria-
 ICONE_WHATS = ('<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" '
                'd="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>')
 
+
+def _icone(corpo: str) -> str:
+    return (f'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+            f'stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{corpo}</svg>')
+
+
+ICONES = {
+    "inicio": _icone('<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>'),
+    "cotidiano": _icone('<circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.4"/>'
+                        '<path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M15 14.5c3 0 6 1.8 6 5.5"/>'),
+    "agenda": _icone('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>'
+                     '<path d="m9.5 15 2 2 3.5-3.5"/>'),
+    "cidade": _icone('<path d="M3 21h18"/><path d="M5 21V9l5-3v15"/><path d="M10 21V4l9 4v13"/>'
+                     '<path d="M13 10h2M13 13h2M13 16h2"/>'),
+    "tempo": _icone('<circle cx="8" cy="8" r="3"/><path d="M8 2v1.5M2 8h1.5M3.8 3.8l1 1M12.2 3.8l-1 1"/>'
+                    '<path d="M9 20h9a4 4 0 0 0 0-8 5.5 5.5 0 0 0-10.4 2A3 3 0 0 0 9 20Z"/>'),
+    "busca": _icone('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>'),
+}
 
 @dataclass
 class Materia:
@@ -204,17 +222,12 @@ def pagina(titulo: str, conteudo: str, agora: datetime, ativo: str = "", base: s
     menu = "".join(
         f'<a class="m-{chave}" href="{base}{href}"{" aria-current=\"page\"" if chave == ativo else ""}>{rotulo}</a>'
         for href, rotulo, chave in itens
-    )
+    ) + f'<a class="m-busca" href="{base}busca.html">{ICONES["busca"]}<span>Buscar</span></a>'
+    atalhos = "".join(
+        f'<a href="{base}{href}"><span class="bolinha b-{chave}">{ICONES[chave]}</span>{rotulo}</a>'
+        for href, rotulo, chave in itens[1:]
+    ) + f'<a href="{base}index.html#tempo"><span class="bolinha b-tempo">{ICONES["tempo"]}</span>Tempo</a>'
     links_rodape = "".join(f'<li><a href="{base}{k}.html">{v}</a></li>' for k, v in SECOES.items())
-    faixa = ""
-    if ultimas:
-        itens_faixa = "".join(
-            f'<li><time>{hora(m, agora)}</time><a href="{base}{m.url}">{escape(m.titulo)}</a></li>'
-            for m in ultimas[:5]
-        )
-        faixa = f"""<div class="faixa"><div class="envoltorio">
-<span class="faixa-rotulo">Últimas</span><ul>{itens_faixa}</ul>
-</div></div>"""
     titulo_completo = NOME if titulo == NOME else f"{titulo} · {NOME}"
     descricao = descricao or "As boas notícias de Petrópolis: o que acontece, o que fazer e o que muda na cidade."
     return f"""<!doctype html>
@@ -233,27 +246,29 @@ def pagina(titulo: str, conteudo: str, agora: datetime, ativo: str = "", base: s
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Source+Sans+3:wght@400;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{base}estilo.css">
+<script src="{base}portal.js" defer></script>
 </head>
-<body>
+<body data-base="{base}">
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
-<div class="barra-dia"><div class="envoltorio">
-<span>{data_extenso(agora.date()).capitalize()}</span>
-<span class="barra-local">Petrópolis · Cidade Imperial · RJ</span>
-</div></div>
-<header class="topo"><div class="envoltorio">
+<header class="topo"><div class="envoltorio topo-grade">
+<nav class="atalhos" aria-label="Atalhos">{atalhos}</nav>
 <a class="marca" href="{base}index.html" aria-label="{NOME}, página inicial">{SOL}
 <span class="marca-nome"><small>Bom Dia</small>Petrópolis</span></a>
-<p class="lema">As boas notícias da serra, todo dia.</p>
+<div class="topo-direita">
+<div class="relogio"><strong data-relogio>{agora:%H:%M}</strong><span>{data_extenso(agora.date())}</span></div>
+<form class="busca" action="{base}busca.html" role="search">
+<input type="search" name="q" placeholder="Buscar no portal" aria-label="Buscar no portal">
+<button type="submit">Buscar</button></form>
+</div>
 </div></header>
 <nav class="menu" aria-label="Editorias"><div class="envoltorio">{menu}</div></nav>
-{faixa}
 <main id="conteudo"><div class="envoltorio">
 {conteudo}
 </div></main>
 <footer class="rodape"><div class="envoltorio">
 <div class="rodape-marca">{SOL}<div><strong>{NOME}</strong>
 <p>As boas notícias da Cidade Imperial: gente que faz, o que fazer e o que muda em Petrópolis.</p></div></div>
-<div><h2>Editorias</h2><ul>{links_rodape}</ul></div>
+<div><h2>Editorias</h2><ul>{links_rodape}<li><a href="{base}busca.html">Buscar</a></li></ul></div>
 <div><h2>Sobre</h2><p>Portal independente, atualizado quatro vezes por dia.
 As matérias são escritas com ajuda de inteligência artificial a partir de informações públicas.</p></div>
 </div>
@@ -282,6 +297,23 @@ def manchete(m: Materia) -> str:
 <h2><a href="{m.url}">{escape(m.titulo)}</a></h2>
 <p>{escape(m.resumo)}</p>
 <span class="quando">{quando(m)} · {leitura(m)}</span></div></article>"""
+
+
+def carrossel(materias: list[Materia]) -> str:
+    slides = "".join(
+        f'<div class="slide" role="group" aria-roledescription="slide" aria-label="{i + 1} de {len(materias)}">'
+        f'{manchete(m)}</div>'
+        for i, m in enumerate(materias)
+    )
+    pontos = "".join(
+        f'<button type="button" aria-label="Ver destaque {i + 1}"{" aria-current=\"true\"" if i == 0 else ""}></button>'
+        for i in range(len(materias))
+    )
+    controles = (f'<div class="carrossel-controles"><button type="button" class="seta" data-anterior aria-label="Anterior">‹</button>'
+                 f'<div class="pontos">{pontos}</div>'
+                 f'<button type="button" class="seta" data-proximo aria-label="Próximo">›</button></div>') if len(materias) > 1 else ""
+    return (f'<section class="carrossel" aria-roledescription="carrossel" aria-label="Principais notícias">'
+            f'<div class="carrossel-trilho">{slides}</div>{controles}</section>')
 
 
 def lista_numerada(materias: list[Materia], agora: datetime, base: str = "") -> str:
@@ -349,11 +381,15 @@ def bloco_secao(chave: str, nome: str, materias: list[Materia]) -> str:
     if not materias:
         return ""
     principal, resto = materias[0], materias[1:4]
+    if resto:
+        miolo = (f'<div class="bloco-grade">{cartao(principal, resumo=True, classe="grande")}'
+                 f'<div class="bloco-lista">{"".join(cartao(m, com_foto=False) for m in resto)}</div></div>')
+    else:
+        miolo = cartao(principal, resumo=True, classe="deitado grande")
     return f"""<section class="bloco {chave}" aria-labelledby="b-{chave}">
 <header class="bloco-topo"><h2 id="b-{chave}"><a href="{chave}.html">{nome}</a></h2>
 <a class="ver-mais" href="{chave}.html">Ver tudo</a></header>
-<div class="bloco-grade">{cartao(principal, resumo=True, classe="grande")}
-<div class="bloco-lista">{"".join(cartao(m, com_foto=False) for m in resto)}</div></div>
+{miolo}
 </section>"""
 
 
@@ -362,8 +398,11 @@ def lateral(materias: list[Materia], eventos: list[dict], hoje: date, agora: dat
     agenda = f"""<section class="caixa caixa-agenda"><h2>Agenda da semana</h2>{lista_agenda(eventos, hoje, limite=6, base=base)}
 <a class="botao" href="{base}agenda.html">Ver agenda completa</a></section>""" if com_agenda else ""
     return f"""<aside class="lateral">
+<section class="caixa caixa-tempo" id="tempo" aria-live="polite"><h2>Tempo em Petrópolis</h2>
+<div data-tempo><p class="vazio">Carregando a previsão…</p></div></section>
 <section class="caixa"><h2>Últimas</h2>{lista_numerada(materias[:5], agora, base)}</section>
-{agenda}</aside>"""
+{agenda}
+</aside>"""
 
 
 # ---------------------------------------------------------------- geração
@@ -374,6 +413,7 @@ def gerar() -> None:
     (SAIDA / "materias").mkdir(parents=True)
     (SAIDA / "artes").mkdir()
     shutil.copy(RAIZ / "site" / "estilo.css", SAIDA / "estilo.css")
+    shutil.copy(RAIZ / "site" / "portal.js", SAIDA / "portal.js")
     (SAIDA / "favicon.svg").write_text(
         SOL.replace('class="marca-sol" width="46" height="46" ', 'xmlns="http://www.w3.org/2000/svg" ')
         .replace("var(--sol)", "#e8833a").replace("var(--serra)", "#24574a"), "utf-8")
@@ -392,8 +432,8 @@ def gerar() -> None:
 
     # Capa
     if materias:
-        topo, destaques = materias[0], materias[1:4]
-        usados = {m.slug for m in materias[:4]}
+        topo, destaques = materias[:3], materias[3:6]
+        usados = {m.slug for m in materias[:6]}
         blocos = ""
         for k, v in SECOES.items():
             da_secao = [m for m in materias if m.secao == v and m.slug not in usados][:4]
@@ -405,7 +445,7 @@ def gerar() -> None:
             bloco_mais = ('<section class="bloco"><header class="bloco-topo"><h2>Mais notícias</h2></header>'
                           '<div class="lista-larga">' + "".join(cartao(m, resumo=True, classe="deitado") for m in mais)
                           + "</div></section>")
-        corpo_capa = f"""<div class="capa-topo">{manchete(topo)}
+        corpo_capa = f"""<div class="capa-topo">{carrossel(topo)}
 <div class="destaques">{"".join(cartao(m) for m in destaques)}</div></div>
 <div class="colunas"><div class="principal">{blocos}{bloco_mais}</div>
 {lateral(materias, eventos, hoje, agora)}</div>"""
@@ -433,6 +473,18 @@ def gerar() -> None:
         else:
             corpo += '<p class="vazio">Ainda não há matérias nesta seção.</p>'
         (SAIDA / f"{chave}.html").write_text(pagina(nome, corpo, agora, chave, ultimas=materias), "utf-8")
+
+    # Busca: índice com todas as matérias + página de resultados (a busca roda no navegador)
+    indice = [{"t": m.titulo, "r": m.resumo, "s": m.secao, "u": m.url, "d": quando(m),
+               "k": " ".join(m.tags)} for m in materias]
+    (SAIDA / "busca.json").write_text(json.dumps(indice, ensure_ascii=False), "utf-8")
+    corpo_busca = """<header class="cabeca-secao"><h1>Buscar</h1><p>Procure por assunto, bairro, evento ou pessoa.</p></header>
+<form class="busca busca-grande" action="busca.html" role="search">
+<input type="search" name="q" placeholder="Ex.: Natal, Itaipava, teatro" aria-label="Buscar no portal">
+<button type="submit">Buscar</button></form>
+<p class="busca-status" data-busca-status aria-live="polite"></p>
+<div class="lista-larga" data-busca-resultados></div>"""
+    (SAIDA / "busca.html").write_text(pagina("Buscar", corpo_busca, agora, ultimas=materias), "utf-8")
 
     # Matérias
     for m in materias:
