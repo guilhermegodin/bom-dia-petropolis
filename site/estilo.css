@@ -358,6 +358,8 @@ main { padding-top: 22px; }
 /* ---------- Publicidade ---------- */
 .anuncio { margin: 18px auto; text-align: center; max-width: 100%; }
 .anuncio a { display: inline-block; max-width: 100%; }
+.anuncio a[hidden] { display: none; }
+.rodape-anuncie { font-weight: 700; color: var(--sol) !important; }
 .anuncio img { display: block; max-width: 100%; height: auto; margin: 0 auto; }
 .anuncio-rotulo {
   display: block; margin-bottom: 4px;

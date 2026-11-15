@@ -283,10 +283,9 @@ def pagina(titulo: str, conteudo: str, agora: datetime, ativo: str = "", base: s
 <div class="rodape-marca">{SOL}<div><strong>{NOME}</strong>
 <p>As boas notícias da Cidade Imperial: gente que faz, o que fazer e o que muda em Petrópolis.</p></div></div>
 <div><h2>Editorias</h2><ul>{links_rodape}<li><a href="{base}busca.html">Buscar</a></li></ul></div>
-<div><h2>Anuncie</h2><p>Leve sua marca para quem vive Petrópolis.</p>
-<p><a href="{base}midia-kit.html">Veja o Mídia Kit</a></p></div>
 <div><h2>Sobre</h2><p>Portal independente, atualizado quatro vezes por dia.
-As matérias são escritas com ajuda de inteligência artificial a partir de informações públicas.</p></div>
+As matérias são escritas com ajuda de inteligência artificial a partir de informações públicas.</p>
+<p><a class="rodape-anuncie" href="{base}midia-kit.html">Anuncie no {NOME}</a></p></div>
 </div>
 <div class="envoltorio rodape-fim">© {agora.year} {NOME}</div>
 </footer>
@@ -531,9 +530,10 @@ def gerar() -> None:
         for k, v in SECOES.items():
             da_secao = [m for m in materias if m.secao == v and m.slug not in usados][:4]
             usados |= {m.slug for m in da_secao}
-            blocos += bloco_secao(k, v, da_secao)
-            if k == "cotidiano" and blocos:
-                blocos += anuncios.banner(ANUNCIOS, "meio")
+            bloco = bloco_secao(k, v, da_secao)
+            if bloco and "anuncio-meio" not in blocos and blocos:
+                bloco = anuncios.banner(ANUNCIOS, "meio") + bloco
+            blocos += bloco
         mais = [m for m in materias[:POR_PAGINA] if m.slug not in usados]
         bloco_mais = ""
         if mais:

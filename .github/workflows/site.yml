@@ -34,6 +34,10 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python -m robo.site
+        env:
+          # Contador de visitas e números do Mídia Kit (veja o README, seção "Audiência e anúncios")
+          GOATCOUNTER_CODIGO: ${{ vars.GOATCOUNTER_CODIGO }}
+          GOATCOUNTER_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

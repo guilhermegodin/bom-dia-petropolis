@@ -24,9 +24,9 @@ ESPACOS = {
              "onde": "No alto de todas as páginas, logo abaixo do menu."},
     "lateral": {"nome": "Quadrado lateral", "tamanho": "300x250", "celular": "300x250",
                 "onde": "Na coluna ao lado das notícias, na capa, nas editorias e nas matérias."},
-    "meio": {"nome": "Faixa da capa", "tamanho": "728x90", "celular": "728x90 (reduz sozinho)",
+    "meio": {"nome": "Faixa da capa", "tamanho": "728x90", "celular": "728x90",
              "onde": "No meio da página inicial, entre as editorias."},
-    "materia": {"nome": "Faixa na matéria", "tamanho": "728x90", "celular": "728x90 (reduz sozinho)",
+    "materia": {"nome": "Faixa na matéria", "tamanho": "728x90", "celular": "728x90",
                 "onde": "Dentro de todas as matérias, logo depois do texto."},
 }
 
