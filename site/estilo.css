@@ -1,0 +1,151 @@
+:root {
+  --fundo: #fbf7f0;
+  --papel: #ffffff;
+  --texto: #2b2620;
+  --suave: #6f665b;
+  --linha: #e8dfd2;
+  --sol: #e8833a;
+  --sol-escuro: #b85d1c;
+  --serra: #2f6b5a;
+  --cotidiano: #2f6b5a;
+  --agenda: #c0542b;
+  --cidade: #3f5f8f;
+  --largura: 1080px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fundo: #1b1916;
+    --papel: #24211d;
+    --texto: #eee7dc;
+    --suave: #b3a998;
+    --linha: #3a352e;
+    --sol: #f19a55;
+    --sol-escuro: #f5b27c;
+    --serra: #7cc2ab;
+    --cotidiano: #7cc2ab;
+    --agenda: #f09a76;
+    --cidade: #94b3e0;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--fundo);
+  color: var(--texto);
+  font: 17px/1.6 "Source Serif 4", Georgia, "Times New Roman", serif;
+}
+a { color: inherit; }
+img { max-width: 100%; }
+.envoltorio { max-width: var(--largura); margin: 0 auto; padding: 0 16px; }
+
+/* Cabeçalho */
+.topo {
+  background: linear-gradient(180deg, #fde6c8 0%, var(--fundo) 100%);
+  border-bottom: 1px solid var(--linha);
+}
+@media (prefers-color-scheme: dark) {
+  .topo { background: linear-gradient(180deg, #3a2a1b 0%, var(--fundo) 100%); }
+}
+.topo .envoltorio { padding-top: 22px; padding-bottom: 10px; }
+.marca {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none;
+}
+.marca svg { flex: none; }
+.marca strong {
+  font: 700 clamp(26px, 5vw, 38px)/1.05 "Fraunces", Georgia, serif;
+  letter-spacing: -0.5px;
+}
+.marca strong span { color: var(--sol-escuro); }
+.data-hoje {
+  margin: 6px 0 0;
+  color: var(--suave);
+  font: 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.menu {
+  display: flex; gap: 6px; flex-wrap: wrap;
+  margin-top: 14px;
+  font: 600 15px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.menu a {
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--papel);
+  border: 1px solid var(--linha);
+}
+.menu a[aria-current="page"] { background: var(--texto); color: var(--fundo); border-color: var(--texto); }
+
+/* Listas de matérias */
+main { padding: 26px 0 50px; }
+.titulo-pagina {
+  font: 700 28px/1.2 "Fraunces", Georgia, serif;
+  margin: 0 0 18px;
+}
+.grade { display: grid; gap: 18px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.cartao {
+  background: var(--papel);
+  border: 1px solid var(--linha);
+  border-radius: 14px;
+  padding: 18px 18px 16px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.cartao h2, .cartao h3 { margin: 0; font: 700 20px/1.25 "Fraunces", Georgia, serif; }
+.cartao h2 a, .cartao h3 a { text-decoration: none; }
+.cartao h2 a:hover, .cartao h3 a:hover { text-decoration: underline; }
+.cartao p { margin: 0; color: var(--suave); }
+.destaque { grid-column: 1 / -1; padding: 24px; }
+.destaque h2 { font-size: clamp(24px, 4vw, 34px); }
+.selo {
+  align-self: flex-start;
+  font: 700 12px/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+  text-transform: uppercase; letter-spacing: .6px;
+  padding: 6px 9px; border-radius: 6px;
+  color: #fff;
+  background: var(--serra);
+}
+.selo.cotidiano { background: var(--cotidiano); }
+.selo.agenda { background: var(--agenda); }
+.selo.cidade { background: var(--cidade); }
+@media (prefers-color-scheme: dark) { .selo { color: #1b1916; } }
+.quando { font: 13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--suave); }
+
+.colunas { display: grid; gap: 28px; grid-template-columns: 1fr; }
+@media (min-width: 860px) { .colunas { grid-template-columns: 2fr 1fr; } }
+.lateral h2 { font: 700 20px/1.2 "Fraunces", Georgia, serif; margin: 0 0 10px; }
+
+/* Agenda */
+.agenda-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.evento {
+  display: grid; grid-template-columns: 58px 1fr; gap: 12px; align-items: start;
+  background: var(--papel); border: 1px solid var(--linha); border-radius: 12px; padding: 12px;
+}
+.dia {
+  text-align: center; border-radius: 10px; padding: 6px 0;
+  background: #fde6c8; color: #7a3a10;
+  font: 700 22px/1 "Fraunces", Georgia, serif;
+}
+.dia small { display: block; font: 700 11px/1.4 system-ui, sans-serif; text-transform: uppercase; }
+@media (prefers-color-scheme: dark) { .dia { background: #4a3320; color: #fde6c8; } }
+.evento strong { display: block; line-height: 1.3; }
+.evento span { font: 14px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--suave); }
+.mes { font: 700 15px/1 system-ui, sans-serif; text-transform: uppercase; letter-spacing: .8px; color: var(--sol-escuro); margin: 22px 0 10px; }
+
+/* Matéria */
+.materia { max-width: 700px; margin: 0 auto; }
+.materia h1 { font: 700 clamp(28px, 5vw, 42px)/1.15 "Fraunces", Georgia, serif; margin: 12px 0 10px; letter-spacing: -0.4px; }
+.materia .linha-fina { font-size: 20px; color: var(--suave); margin: 0 0 14px; }
+.materia .corpo p { margin: 0 0 1.1em; }
+.materia .corpo ul { padding-left: 1.2em; }
+.materia .corpo li { margin-bottom: .5em; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 22px; font: 13px/1 system-ui, sans-serif; color: var(--suave); }
+.tags span { border: 1px solid var(--linha); border-radius: 999px; padding: 6px 10px; }
+
+.vazio { color: var(--suave); }
+.rodape {
+  border-top: 1px solid var(--linha);
+  padding: 22px 0 34px;
+  color: var(--suave);
+  font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
