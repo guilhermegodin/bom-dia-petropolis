@@ -1,0 +1,30 @@
+name: Testar redes sociais
+
+# Rode à mão (Actions > Testar redes sociais > Run workflow) depois de salvar o segredo META_TOKEN.
+# Confere se o token funciona e mostra o que seria postado, sem postar nada.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  testar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Conferir o token da Meta
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+        run: python -m robo.redes verificar
+      - name: Mostrar o que seria postado
+        env:
+          META_TOKEN: ${{ secrets.META_TOKEN }}
+          REDES_POR_RODADA: ${{ vars.REDES_POR_RODADA }}
+          SITE_URL: ${{ vars.SITE_URL }}
+        run: python -m robo.redes postar --teste

@@ -75,3 +75,43 @@ pip install -r requirements.txt
 export GEMINI_API_KEY=...
 python -m robo.main --teste
 ```
+
+## Redes sociais (Facebook e Instagram)
+
+Depois que o site é publicado, o workflow "Publicar site" posta as matérias novas na Página do
+Facebook e no Instagram do portal, pelas APIs oficiais da Meta (`robo/redes.py`). Cada matéria
+vira um card 1080x1350 com a foto, a etiqueta e a cor da editoria (Cotidiano verde, Agenda
+laranja, Cidade azul) e a marca no rodapé. Sem foto, o card usa a arte de serra e sol.
+
+- No Facebook o post leva o título, o resumo e o link da matéria.
+- No Instagram o post leva título, resumo, "link na bio" e hashtags.
+- Posta até 3 matérias por rodada (variável `REDES_POR_RODADA`), só das últimas 24 horas.
+- O que já foi postado fica em `dados/redes.json`, para nada sair repetido.
+- Sem o segredo `META_TOKEN`, nada é postado e o resto segue normal.
+
+WhatsApp não é automatizado de propósito: robôs em grupos levam ao bloqueio do número. O caminho
+seguro é um Canal de WhatsApp do portal, com postagem manual.
+
+### Configuração (uma vez só)
+
+1. **Página do Facebook**: crie em https://www.facebook.com/pages/create.
+2. **Instagram profissional**: no app do Instagram, em Configurações → Tipo de conta, mude para
+   conta profissional. Depois ligue o Instagram à Página (na Página: Configurações → Contas
+   vinculadas → Instagram).
+3. **App da Meta**: em https://developers.facebook.com/apps clique em **Criar app**, escolha o
+   caso de uso de gerenciar Página e conteúdo do Instagram, tipo **Empresa**.
+4. **Token**: abra o Explorador da Graph API (https://developers.facebook.com/tools/explorer),
+   escolha o app, clique em **Gerar token de acesso** e marque as permissões
+   `pages_show_list`, `pages_read_engagement`, `pages_manage_posts`, `instagram_basic`,
+   `instagram_content_publish` e `business_management`. Autorize a Página e o Instagram.
+5. **Token que não expira**: cole o token no Depurador (https://developers.facebook.com/tools/debug/accesstoken),
+   clique em **Depurar** e depois em **Estender token de acesso**. Volte ao Explorador, cole o
+   token estendido, consulte `me/accounts` e copie o `access_token` da sua Página.
+   No Depurador, esse token da Página deve mostrar "Expira: Nunca".
+6. **GitHub**: salve esse token como o segredo `META_TOKEN`
+   (Settings → Secrets and variables → Actions → New repository secret).
+7. **Teste**: em Actions → **Testar redes sociais** → Run workflow. O log mostra a Página e o
+   Instagram conectados e o que seria postado, sem postar nada.
+8. Coloque o endereço do site no link da bio do Instagram.
+
+Se os posts do Facebook aparecerem só para você, publique o app (modo "Ao vivo") no painel da Meta.
