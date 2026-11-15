@@ -52,6 +52,12 @@ O robô só lê os e-mails, sem apagar nem marcar como lidos.
 `python -m robo.site` gera o site em `_site/` a partir das matérias e da agenda. O workflow
 "Publicar site" faz isso sozinho depois de cada rodada do robô e publica no GitHub Pages.
 
+O visual fica em `site/estilo.css` e o layout em `robo/site.py` (capa com manchete, destaques,
+blocos por editoria, "Últimas" e "Agenda da semana" na lateral). Como as matérias não têm foto,
+cada uma ganha uma arte própria de serra e sol nas cores da editoria. Se uma matéria trouxer o
+campo `imagem` no cabeçalho (endereço de uma foto com direito de uso), ela substitui a arte.
+Prévias do layout ficam em `previa/`.
+
 Para ligar o GitHub Pages (uma vez só): **Settings → Pages → Build and deployment → Source:
 GitHub Actions**.
 
