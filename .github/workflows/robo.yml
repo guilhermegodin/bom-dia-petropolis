@@ -1,0 +1,43 @@
+name: Robô de notícias
+
+on:
+  schedule:
+    # Horários em UTC: 9h, 13h, 17h e 21h = 6h, 10h, 14h e 18h em Petrópolis
+    - cron: "17 9,13,17,21 * * *"
+  workflow_dispatch:
+    inputs:
+      teste:
+        description: "Rodar em modo teste (não publica nada)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: robo
+  cancel-in-progress: false
+
+jobs:
+  rodar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Rodar o robô
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python -m robo.main ${{ inputs.teste && '--teste' || '' }}
+      - name: Salvar matérias novas
+        if: ${{ !inputs.teste }}
+        run: |
+          git config user.name "Robô Bom Dia Petrópolis"
+          git config user.email "robo@users.noreply.github.com"
+          git add conteudo dados
+          git diff --cached --quiet || git commit -m "Matérias de $(TZ=America/Sao_Paulo date '+%d/%m %Hh')"
+          git push
