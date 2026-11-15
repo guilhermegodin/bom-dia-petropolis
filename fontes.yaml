@@ -1,0 +1,37 @@
+# Fontes que o robô verifica a cada execução.
+# tipo: rss  -> lê o feed RSS/Atom
+# tipo: html -> abre a página e pega os links cujo endereço combina com "padrao_link"
+# Fontes marcadas "confirmar: true" ainda não foram testadas; se falharem, o robô só pula.
+
+fontes:
+  - nome: Prefeitura de Petrópolis
+    tipo: html
+    url: https://www.petropolis.rj.gov.br/pmp/index.php/imprensa/noticias.html
+    padrao_link: /imprensa/noticias/
+    secao_sugerida: Cidade
+    confirmar: true
+
+  - nome: Sou Petrópolis
+    tipo: rss
+    url: https://soupetropolis.com/feed/
+    secao_sugerida: Agenda
+    confirmar: true
+
+  - nome: Correio Petropolitano
+    tipo: html
+    url: https://www.correiodamanha.com.br/petropolitano
+    padrao_link: /petropolitano/.*/20\d\d/
+    secao_sugerida: Cotidiano
+    confirmar: true
+
+  - nome: Tribuna de Petrópolis
+    tipo: rss
+    url: https://tribunadepetropolis.com.br/feed/
+    secao_sugerida: Cotidiano
+    confirmar: true
+
+  - nome: Diário do Rio (Petrópolis)
+    tipo: rss
+    url: https://diariodorio.com/tag/petropolis/feed/
+    secao_sugerida: Agenda
+    confirmar: true
