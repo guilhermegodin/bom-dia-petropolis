@@ -47,6 +47,14 @@ O robô também lê releases enviados para uma caixa de e-mail do portal.
 
 O robô só lê os e-mails, sem apagar nem marcar como lidos.
 
+## Site
+
+`python -m robo.site` gera o site em `_site/` a partir das matérias e da agenda. O workflow
+"Publicar site" faz isso sozinho depois de cada rodada do robô e publica no GitHub Pages.
+
+Para ligar o GitHub Pages (uma vez só): **Settings → Pages → Build and deployment → Source:
+GitHub Actions**.
+
 ## Ajustes comuns
 
 - **Adicionar uma fonte:** inclua um item em `fontes.yaml`.
