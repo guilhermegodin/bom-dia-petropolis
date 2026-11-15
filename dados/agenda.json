@@ -1,0 +1,47 @@
+[
+  {
+    "nome": "Festival Literário Internacional de Petrópolis - Flipetrópolis",
+    "data_inicio": "2026-11-12",
+    "data_fim": "2026-11-15",
+    "horario": "",
+    "local": "Palácio de Cristal, Petrópolis (RJ)",
+    "gratuito": "sim",
+    "materia": "2026-11-15-0823-flipetropolis-2026-comeca-no-palacio-de-cristal-com-entrada-gratuita"
+  },
+  {
+    "nome": "Concerto Imperial de Natal",
+    "data_inicio": "2026-11-19",
+    "data_fim": "2026-11-19",
+    "horario": "20h",
+    "local": "Teatro Imperial",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-15-0823-teatro-imperial-tem-programacao-especial-de-natal-em-petropolis"
+  },
+  {
+    "nome": "Clássicos Encantados de Natal – O Musical",
+    "data_inicio": "2026-11-28",
+    "data_fim": "2026-11-28",
+    "horario": "15h",
+    "local": "Teatro Imperial",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-15-0823-teatro-imperial-tem-programacao-especial-de-natal-em-petropolis"
+  },
+  {
+    "nome": "Amazing Tenors Christmas Concert – Especial de Natal",
+    "data_inicio": "2026-11-28",
+    "data_fim": "2026-11-28",
+    "horario": "20h",
+    "local": "Teatro Imperial",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-15-0823-teatro-imperial-tem-programacao-especial-de-natal-em-petropolis"
+  },
+  {
+    "nome": "Concerto Natalino",
+    "data_inicio": "2026-12-03",
+    "data_fim": "2026-12-03",
+    "horario": "20h",
+    "local": "Teatro Imperial",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-15-0823-teatro-imperial-tem-programacao-especial-de-natal-em-petropolis"
+  }
+]
