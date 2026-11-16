@@ -88,5 +88,14 @@
     "local": "Teatro Imperial",
     "gratuito": "nao_informado",
     "materia": "2026-11-15-0823-teatro-imperial-tem-programacao-especial-de-natal-em-petropolis"
+  },
+  {
+    "nome": "Encerramento da temporada esportiva em Copacabana",
+    "data_inicio": "2026-12-12",
+    "data_fim": "2026-12-13",
+    "horario": "",
+    "local": "Copacabana",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-16-1506-atleta-petropolitana-conquista-7o-lugar-no-mundial-oceanman"
   }
 ]
