@@ -90,6 +90,15 @@
     "materia": "2026-11-19-0714-petropolis-inicia-campanha-dos-21-dias-de-ativismo-nesta-quinta"
   },
   {
+    "nome": "Concerto Imperial de Natal com Orquestra Teatro Imperial e Sabrina Korgut",
+    "data_inicio": "2026-11-19",
+    "data_fim": "2026-11-19",
+    "horario": "20h",
+    "local": "Teatro Imperial – Rua General Osório, 192, Centro, Petrópolis",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-19-1459-teatro-imperial-celebra-tres-anos-com-shows-teatro-e-humor-em-petropol"
+  },
+  {
     "nome": "Petrópolis Gourmet - Segundo dia",
     "data_inicio": "2026-11-20",
     "data_fim": "2026-11-20",
@@ -135,6 +144,15 @@
     "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
   },
   {
+    "nome": "Agora É Que São Elas",
+    "data_inicio": "2026-11-20",
+    "data_fim": "2026-11-20",
+    "horario": "20h",
+    "local": "Teatro Imperial – Rua General Osório, 192, Centro, Petrópolis",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-19-1459-teatro-imperial-celebra-tres-anos-com-shows-teatro-e-humor-em-petropol"
+  },
+  {
     "nome": "Petrópolis Gourmet - Terceiro dia",
     "data_inicio": "2026-11-21",
     "data_fim": "2026-11-21",
@@ -171,6 +189,15 @@
     "materia": "2026-11-19-0714-projeto-estacao-ativa-traz-programacao-do-novembro-azul-a-nogueira"
   },
   {
+    "nome": "Festival Medio y Medio com Refúgio dos Amores Improváveis e Paulinho Moska",
+    "data_inicio": "2026-11-21",
+    "data_fim": "2026-11-21",
+    "horario": "20h",
+    "local": "Teatro Imperial – Rua General Osório, 192, Centro, Petrópolis",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-19-1459-teatro-imperial-celebra-tres-anos-com-shows-teatro-e-humor-em-petropol"
+  },
+  {
     "nome": "Petrópolis Gourmet - Encerramento",
     "data_inicio": "2026-11-22",
     "data_fim": "2026-11-22",
@@ -198,6 +225,15 @@
     "materia": "2026-11-18-1857-senac-rj-leva-oficinas-e-desafio-de-chefs-ao-petropolis-gourmet"
   },
   {
+    "nome": "Frequência Reggae – Bira Rasta Vive",
+    "data_inicio": "2026-11-22",
+    "data_fim": "2026-11-22",
+    "horario": "19h",
+    "local": "Teatro Imperial – Rua General Osório, 192, Centro, Petrópolis",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-19-1459-teatro-imperial-celebra-tres-anos-com-shows-teatro-e-humor-em-petropol"
+  },
+  {
     "nome": "Natal Imperial",
     "data_inicio": "2026-11-27",
     "data_fim": "2027-01-04",
@@ -205,6 +241,15 @@
     "local": "Palácio de Cristal, Centro Histórico",
     "gratuito": "sim",
     "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
+  },
+  {
+    "nome": "Serginho Lacerda – Vida de Pai",
+    "data_inicio": "2026-11-27",
+    "data_fim": "2026-11-27",
+    "horario": "20h",
+    "local": "Teatro Imperial – Rua General Osório, 192, Centro, Petrópolis",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-19-1459-teatro-imperial-celebra-tres-anos-com-shows-teatro-e-humor-em-petropol"
   },
   {
     "nome": "Clássicos Encantados de Natal – O Musical",
