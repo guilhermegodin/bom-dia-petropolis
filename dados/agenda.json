@@ -9,6 +9,15 @@
     "materia": "2026-11-15-1057-espetaculo-som-e-luz-retorna-aos-jardins-do-museu-imperial-em-petropol"
   },
   {
+    "nome": "1º Itaipava World Jazz Fest",
+    "data_inicio": "2026-11-12",
+    "data_fim": "2026-12-05",
+    "horario": "",
+    "local": "Centro Cultural Soberano Jazz Club, Estrada União e Indústria, 11.000, Itaipava",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
+  },
+  {
     "nome": "Concerto Imperial de Natal",
     "data_inicio": "2026-11-19",
     "data_fim": "2026-11-19",
@@ -45,6 +54,42 @@
     "materia": "2026-11-18-1857-sarau-da-etc-estreia-em-itaipava-com-musica-e-gastronomia"
   },
   {
+    "nome": "Espetáculo teatral \"A Família Perfeita!\"",
+    "data_inicio": "2026-11-19",
+    "data_fim": "2026-11-19",
+    "horario": "19h45",
+    "local": "União Espírita Allan Kardec (UEAK), Rua Machado Fagundes, 329, Cascatinha",
+    "gratuito": "sim",
+    "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
+  },
+  {
+    "nome": "Exposição \"Mais Belo é o Rio que Corre\"",
+    "data_inicio": "2026-11-19",
+    "data_fim": "2027-02-28",
+    "horario": "10h às 17h",
+    "local": "Centro Cultural Sesc Quitandinha",
+    "gratuito": "sim",
+    "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
+  },
+  {
+    "nome": "Petrópolis Gourmet",
+    "data_inicio": "2026-11-19",
+    "data_fim": "2026-11-22",
+    "horario": "",
+    "local": "Petrópolis",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
+  },
+  {
+    "nome": "Blitz educativa de abertura da Campanha dos 21 Dias de Ativismo",
+    "data_inicio": "2026-11-19",
+    "data_fim": "2026-11-19",
+    "horario": "14:00",
+    "local": "Praça Dom Pedro",
+    "gratuito": "sim",
+    "materia": "2026-11-19-0714-petropolis-inicia-campanha-dos-21-dias-de-ativismo-nesta-quinta"
+  },
+  {
     "nome": "Petrópolis Gourmet - Segundo dia",
     "data_inicio": "2026-11-20",
     "data_fim": "2026-11-20",
@@ -61,6 +106,33 @@
     "local": "Shopping Vilarejo, Itaipava",
     "gratuito": "sim",
     "materia": "2026-11-15-1057-festival-de-ceramica-e-atracoes-culturais-agitam-petropolis"
+  },
+  {
+    "nome": "Ipiranga Mix - Feira Multicultural",
+    "data_inicio": "2026-11-20",
+    "data_fim": "2026-11-22",
+    "horario": "11h às 18h",
+    "local": "Paço Ipiranga, Centro",
+    "gratuito": "sim",
+    "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
+  },
+  {
+    "nome": "6ª Caminhada Contra as Intolerâncias e o Racismo Religioso",
+    "data_inicio": "2026-11-20",
+    "data_fim": "2026-11-20",
+    "horario": "09h30",
+    "local": "Praça da Inconfidência, Centro Histórico",
+    "gratuito": "sim",
+    "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
+  },
+  {
+    "nome": "Festival Afro Ubuntu",
+    "data_inicio": "2026-11-20",
+    "data_fim": "2026-11-20",
+    "horario": "",
+    "local": "Praça da Liberdade",
+    "gratuito": "sim",
+    "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
   },
   {
     "nome": "Petrópolis Gourmet - Terceiro dia",
@@ -90,6 +162,15 @@
     "materia": "2026-11-18-1857-senac-rj-leva-oficinas-e-desafio-de-chefs-ao-petropolis-gourmet"
   },
   {
+    "nome": "Estação Ativa - Edição Novembro Azul",
+    "data_inicio": "2026-11-21",
+    "data_fim": "2026-11-21",
+    "horario": "11h",
+    "local": "Centro Cultural Estação Nogueira",
+    "gratuito": "sim",
+    "materia": "2026-11-19-0714-projeto-estacao-ativa-traz-programacao-do-novembro-azul-a-nogueira"
+  },
+  {
     "nome": "Petrópolis Gourmet - Encerramento",
     "data_inicio": "2026-11-22",
     "data_fim": "2026-11-22",
@@ -117,6 +198,15 @@
     "materia": "2026-11-18-1857-senac-rj-leva-oficinas-e-desafio-de-chefs-ao-petropolis-gourmet"
   },
   {
+    "nome": "Natal Imperial",
+    "data_inicio": "2026-11-27",
+    "data_fim": "2027-01-04",
+    "horario": "Segunda a quinta das 14h às 22h, sextas a domingos das 10h às 22h",
+    "local": "Palácio de Cristal, Centro Histórico",
+    "gratuito": "sim",
+    "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
+  },
+  {
     "nome": "Clássicos Encantados de Natal – O Musical",
     "data_inicio": "2026-11-28",
     "data_fim": "2026-11-28",
@@ -133,6 +223,15 @@
     "local": "Teatro Imperial",
     "gratuito": "nao_informado",
     "materia": "2026-11-15-0823-teatro-imperial-tem-programacao-especial-de-natal-em-petropolis"
+  },
+  {
+    "nome": "2ª Edição do Multi Festival",
+    "data_inicio": "2026-11-28",
+    "data_fim": "2026-11-29",
+    "horario": "",
+    "local": "Shopping Vilarejo, Estrada União e Indústria, 10.035, Itaipava",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
   },
   {
     "nome": "Concerto Natalino",
