@@ -36,15 +36,6 @@
     "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
   },
   {
-    "nome": "Petrópolis Gourmet - Segundo dia",
-    "data_inicio": "2026-11-20",
-    "data_fim": "2026-11-20",
-    "horario": "9h às 22h",
-    "local": "Shopping Estação Locanda, Itaipava",
-    "gratuito": "sim",
-    "materia": "2026-11-15-1057-petropolis-gourmet-traz-feira-shows-e-oficinas-a-itaipava"
-  },
-  {
     "nome": "Festival de Cerâmica de Petrópolis",
     "data_inicio": "2026-11-20",
     "data_fim": "2026-11-22",
@@ -61,33 +52,6 @@
     "local": "Paço Ipiranga, Centro",
     "gratuito": "sim",
     "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
-  },
-  {
-    "nome": "6ª Caminhada Contra as Intolerâncias e o Racismo Religioso",
-    "data_inicio": "2026-11-20",
-    "data_fim": "2026-11-20",
-    "horario": "09h30",
-    "local": "Praça da Inconfidência, Centro Histórico",
-    "gratuito": "sim",
-    "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
-  },
-  {
-    "nome": "Festival Afro Ubuntu",
-    "data_inicio": "2026-11-20",
-    "data_fim": "2026-11-20",
-    "horario": "",
-    "local": "Praça da Liberdade",
-    "gratuito": "sim",
-    "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
-  },
-  {
-    "nome": "Agora É Que São Elas",
-    "data_inicio": "2026-11-20",
-    "data_fim": "2026-11-20",
-    "horario": "20h",
-    "local": "Teatro Imperial – Rua General Osório, 192, Centro, Petrópolis",
-    "gratuito": "nao_informado",
-    "materia": "2026-11-19-1459-teatro-imperial-celebra-tres-anos-com-shows-teatro-e-humor-em-petropol"
   },
   {
     "nome": "Petrópolis Gourmet - Terceiro dia",
