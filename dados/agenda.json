@@ -54,51 +54,6 @@
     "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
   },
   {
-    "nome": "Petrópolis Gourmet - Terceiro dia",
-    "data_inicio": "2026-11-21",
-    "data_fim": "2026-11-21",
-    "horario": "10h às 22h",
-    "local": "Shopping Estação Locanda, Itaipava",
-    "gratuito": "sim",
-    "materia": "2026-11-15-1057-petropolis-gourmet-traz-feira-shows-e-oficinas-a-itaipava"
-  },
-  {
-    "nome": "Festival Medio y Medio - Paulinho Moska e Refúgio dos Amores Improváveis",
-    "data_inicio": "2026-11-21",
-    "data_fim": "2026-11-21",
-    "horario": "18:30",
-    "local": "Teatro Imperial – Rua Marechal Deodoro, 192 – Centro",
-    "gratuito": "nao",
-    "materia": "2026-11-17-1506-festival-medio-y-medio-estreia-em-petropolis-com-paulinho-moska"
-  },
-  {
-    "nome": "Ateliê de Biscoitos Natalinos Decorados",
-    "data_inicio": "2026-11-21",
-    "data_fim": "2026-11-21",
-    "horario": "10h às 10h45",
-    "local": "Shopping Estação Locanda – Estrada União e Indústria, 11000 – Itaipava",
-    "gratuito": "sim",
-    "materia": "2026-11-18-1857-senac-rj-leva-oficinas-e-desafio-de-chefs-ao-petropolis-gourmet"
-  },
-  {
-    "nome": "Estação Ativa - Edição Novembro Azul",
-    "data_inicio": "2026-11-21",
-    "data_fim": "2026-11-21",
-    "horario": "11h",
-    "local": "Centro Cultural Estação Nogueira",
-    "gratuito": "sim",
-    "materia": "2026-11-19-0714-projeto-estacao-ativa-traz-programacao-do-novembro-azul-a-nogueira"
-  },
-  {
-    "nome": "Festival Medio y Medio com Refúgio dos Amores Improváveis e Paulinho Moska",
-    "data_inicio": "2026-11-21",
-    "data_fim": "2026-11-21",
-    "horario": "20h",
-    "local": "Teatro Imperial – Rua General Osório, 192, Centro, Petrópolis",
-    "gratuito": "nao_informado",
-    "materia": "2026-11-19-1459-teatro-imperial-celebra-tres-anos-com-shows-teatro-e-humor-em-petropol"
-  },
-  {
     "nome": "Petrópolis Gourmet - Encerramento",
     "data_inicio": "2026-11-22",
     "data_fim": "2026-11-22",
