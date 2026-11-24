@@ -27,6 +27,15 @@
     "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
   },
   {
+    "nome": "Bazar da APPO",
+    "data_inicio": "2026-11-23",
+    "data_fim": "2026-11-27",
+    "horario": "09h às 18h",
+    "local": "Igreja do Rosário",
+    "gratuito": "nao",
+    "materia": "2026-11-24-0220-bazar-da-appo-comeca-nesta-segunda-feira-na-igreja-do-rosario"
+  },
+  {
     "nome": "Natal Imperial",
     "data_inicio": "2026-11-27",
     "data_fim": "2027-01-04",
