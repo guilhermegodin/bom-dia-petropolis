@@ -45,6 +45,15 @@
     "materia": "2026-11-24-0220-bazar-da-appo-comeca-nesta-segunda-feira-na-igreja-do-rosario"
   },
   {
+    "nome": "Atendimento Prefeitura e INSS no Terminal Centro",
+    "data_inicio": "2026-11-25",
+    "data_fim": "2026-12-03",
+    "horario": "09:00 às 13:00",
+    "local": "Terminal Centro",
+    "gratuito": "sim",
+    "materia": "2026-11-25-0109-prefeitura-e-inss-oferecem-atendimento-gratuito-no-terminal-centro"
+  },
+  {
     "nome": "Natal Imperial",
     "data_inicio": "2026-11-27",
     "data_fim": "2027-01-04",
