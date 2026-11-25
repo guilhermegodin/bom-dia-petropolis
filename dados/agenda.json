@@ -108,6 +108,24 @@
     "materia": "2026-11-19-0714-confira-a-programacao-cultural-e-os-eventos-em-petropolis"
   },
   {
+    "nome": "Multi Festival - Sábado",
+    "data_inicio": "2026-11-28",
+    "data_fim": "2026-11-28",
+    "horario": "13:00",
+    "local": "Shopping Vilarejo - Estrada União e Indústria, 10.035, Itaipava",
+    "gratuito": "sim",
+    "materia": "2026-11-25-1614-multi-festival-chega-a-itaipava-com-shows-gratuitos-e-workshops"
+  },
+  {
+    "nome": "Multi Festival - Domingo",
+    "data_inicio": "2026-11-29",
+    "data_fim": "2026-11-29",
+    "horario": "13:00",
+    "local": "Shopping Vilarejo - Estrada União e Indústria, 10.035, Itaipava",
+    "gratuito": "sim",
+    "materia": "2026-11-25-1614-multi-festival-chega-a-itaipava-com-shows-gratuitos-e-workshops"
+  },
+  {
     "nome": "Concerto Natalino",
     "data_inicio": "2026-12-03",
     "data_fim": "2026-12-03",
