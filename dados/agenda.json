@@ -54,6 +54,15 @@
     "materia": "2026-11-25-0109-prefeitura-e-inss-oferecem-atendimento-gratuito-no-terminal-centro"
   },
   {
+    "nome": "Liga Petropolitana de Futevôlei - Inscrições",
+    "data_inicio": "2026-11-26",
+    "data_fim": "2026-12-05",
+    "horario": "",
+    "local": "Petrópolis",
+    "gratuito": "nao",
+    "materia": "2026-11-26-0032-inscricoes-abertas-para-a-liga-petropolitana-de-futevolei"
+  },
+  {
     "nome": "Natal Imperial",
     "data_inicio": "2026-11-27",
     "data_fim": "2027-01-04",
@@ -126,6 +135,15 @@
     "materia": "2026-11-25-1614-multi-festival-chega-a-itaipava-com-shows-gratuitos-e-workshops"
   },
   {
+    "nome": "Feira da 16 - Edição Black Friday",
+    "data_inicio": "2026-11-29",
+    "data_fim": "2026-11-29",
+    "horario": "10h às 17h",
+    "local": "Rua 16 de Março",
+    "gratuito": "sim",
+    "materia": "2026-11-26-0032-feira-da-16-tem-edicao-especial-de-black-friday-neste-domingo"
+  },
+  {
     "nome": "Concerto Natalino",
     "data_inicio": "2026-12-03",
     "data_fim": "2026-12-03",
@@ -135,6 +153,15 @@
     "materia": "2026-11-15-0823-teatro-imperial-tem-programacao-especial-de-natal-em-petropolis"
   },
   {
+    "nome": "I Torneio de Xadrez dos Anos Iniciais de Petrópolis",
+    "data_inicio": "2026-12-03",
+    "data_fim": "2026-12-03",
+    "horario": "",
+    "local": "Escola Municipal Germano Valente, Morin",
+    "gratuito": "sim",
+    "materia": "2026-11-26-0032-escola-municipal-germano-valente-recebe-torneio-de-xadrez"
+  },
+  {
     "nome": "Encerramento da temporada esportiva em Copacabana",
     "data_inicio": "2026-12-12",
     "data_fim": "2026-12-13",
@@ -142,5 +169,14 @@
     "local": "Copacabana",
     "gratuito": "nao_informado",
     "materia": "2026-11-16-1506-atleta-petropolitana-conquista-7o-lugar-no-mundial-oceanman"
+  },
+  {
+    "nome": "Primeira etapa da Liga Petropolitana de Futevôlei",
+    "data_inicio": "2026-12-12",
+    "data_fim": "2026-12-12",
+    "horario": "10h",
+    "local": "Arena Bingen",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-26-0032-arena-bingen-recebe-primeira-etapa-da-liga-petropolitana-de-futevolei"
   }
 ]
