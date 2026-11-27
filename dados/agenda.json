@@ -72,6 +72,15 @@
     "materia": "2026-11-26-1558-cine-show-petropolis-tem-8-filmes-em-cartaz-nesta-semana"
   },
   {
+    "nome": "Festival de Cinema de Petrópolis e Itaipava",
+    "data_inicio": "2026-11-26",
+    "data_fim": "2026-11-29",
+    "horario": "",
+    "local": "Praça da Liberdade e Shopping Estação Locanda",
+    "gratuito": "sim",
+    "materia": "2026-11-27-1555-o-que-fazer-no-fim-de-semana-em-petropolis-confira-as-atracoes-da-serr"
+  },
+  {
     "nome": "Natal Imperial",
     "data_inicio": "2026-11-27",
     "data_fim": "2027-01-04",
@@ -97,6 +106,33 @@
     "local": "Palácio de Cristal",
     "gratuito": "sim",
     "materia": "2026-11-19-2318-natal-imperial-2026-em-petropolis-comeca-em-novembro"
+  },
+  {
+    "nome": "Stand Up Comedy 'Vida de Pai' com Serginho Lacerda",
+    "data_inicio": "2026-11-27",
+    "data_fim": "2026-11-27",
+    "horario": "20h",
+    "local": "Teatro Imperial",
+    "gratuito": "nao",
+    "materia": "2026-11-27-1555-o-que-fazer-no-fim-de-semana-em-petropolis-confira-as-atracoes-da-serr"
+  },
+  {
+    "nome": "Show do grupo Taruíra - 24 anos",
+    "data_inicio": "2026-11-27",
+    "data_fim": "2026-11-27",
+    "horario": "20h",
+    "local": "Centro Cultural Sesc Quitandinha",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-27-1555-o-que-fazer-no-fim-de-semana-em-petropolis-confira-as-atracoes-da-serr"
+  },
+  {
+    "nome": "Itaipava World Jazz Fest - Bianca Gismonti",
+    "data_inicio": "2026-11-27",
+    "data_fim": "2026-11-27",
+    "horario": "21h",
+    "local": "Soberano Jazz Club",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-27-1555-o-que-fazer-no-fim-de-semana-em-petropolis-confira-as-atracoes-da-serr"
   },
   {
     "nome": "Clássicos Encantados de Natal – O Musical",
@@ -135,6 +171,33 @@
     "materia": "2026-11-25-1614-multi-festival-chega-a-itaipava-com-shows-gratuitos-e-workshops"
   },
   {
+    "nome": "Multi Festival em Itaipava",
+    "data_inicio": "2026-11-28",
+    "data_fim": "2026-11-29",
+    "horario": "",
+    "local": "Shopping Vilarejo",
+    "gratuito": "sim",
+    "materia": "2026-11-27-1555-o-que-fazer-no-fim-de-semana-em-petropolis-confira-as-atracoes-da-serr"
+  },
+  {
+    "nome": "Itaipava World Jazz Fest - Manuel de Oliveira",
+    "data_inicio": "2026-11-28",
+    "data_fim": "2026-11-28",
+    "horario": "21h",
+    "local": "Soberano Jazz Club",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-27-1555-o-que-fazer-no-fim-de-semana-em-petropolis-confira-as-atracoes-da-serr"
+  },
+  {
+    "nome": "Campanha de Vacinação Antirrábica - 5ª Etapa",
+    "data_inicio": "2026-11-28",
+    "data_fim": "2026-11-28",
+    "horario": "",
+    "local": "Centro, Cascatinha, Itamarati, Floresta, Caxambu, Morin e Alto da Serra",
+    "gratuito": "sim",
+    "materia": "2026-11-27-1555-petropolis-realiza-nova-etapa-de-vacinacao-antirrabica-para-caes-e-gat"
+  },
+  {
     "nome": "Multi Festival - Domingo",
     "data_inicio": "2026-11-29",
     "data_fim": "2026-11-29",
@@ -169,6 +232,15 @@
     "local": "Escola Municipal Germano Valente, Morin",
     "gratuito": "sim",
     "materia": "2026-11-26-0032-escola-municipal-germano-valente-recebe-torneio-de-xadrez"
+  },
+  {
+    "nome": "Concerto Natalino do Coral de Petrópolis",
+    "data_inicio": "2026-12-03",
+    "data_fim": "2026-12-03",
+    "horario": "20h",
+    "local": "Teatro Imperial",
+    "gratuito": "nao_informado",
+    "materia": "2026-11-27-1555-o-que-fazer-no-fim-de-semana-em-petropolis-confira-as-atracoes-da-serr"
   },
   {
     "nome": "Encerramento da temporada esportiva em Copacabana",
